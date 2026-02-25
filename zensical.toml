@@ -1,0 +1,234 @@
+[project]
+
+repo_url = "https://github.com/HB9HIL/testdocs"
+repo_name = "HB9HIL/testdocs"
+site_name = "HB9HIL Testdocs"
+site_description = "Testing Documentation"
+site_author = "The Wavelog Dev Team and it's community"
+site_url = "https://testdocs.hb9hil.org/"
+
+copyright = """
+Copyright &copy; 2026 Wavelog
+"""
+
+extra_css = ["stylesheets/extra.css"]
+
+nav = [
+  {"The Project" = [
+    {"The Wavelog Project" = "index.md"},
+    {"Contributing" = "project/contributing.md"},
+    {"Code of Conduct" = "project/code-of-conduct.md"},
+  ]},
+  {"Getting Started" = [
+    {"Installation" = [
+      "getting-started/installation/docker.md",
+      "getting-started/installation/linux.md",
+      "getting-started/installation/windows-wamp.md",
+      {"RaspberryPi" = "getting-started/installation/raspberry-pi.md"},
+      "getting-started/installation/freebsd.md",
+      "getting-started/installation/openbsd.md",
+    ]},
+    "getting-started/updating.md",
+    "getting-started/hints-and-tips.md",
+    {"Migrate Cloudlog to Wavelog" = [
+      {"Guide" = "getting-started/migration/cloudlog-to-wavelog.md"},
+    ]}
+  ]},
+  {"User Guide" = [
+    {"Logbook" = [
+      "user-guide/logbook/dashboard.md",
+      "user-guide/logbook/logging.md",
+      "user-guide/logbook/logbook.md",
+      "user-guide/logbook/advanced-logbook.md",
+      "user-guide/logbook/qso-details.md",
+      "user-guide/logbook/simple-fle.md",
+      "user-guide/logbook/qso-modes.md",
+      "user-guide/logbook/keyboard-shortcuts.md",
+    ]},
+    {"QSL Management" = [
+      "user-guide/qsl/adif-import-export.md",
+      "user-guide/qsl/lotw.md",
+      "user-guide/qsl/lotw-import-export.md",
+      "user-guide/qsl/lotw-sync.md",
+      "user-guide/qsl/eqsl.md",
+      "user-guide/qsl/qrz-logbook.md",
+      "user-guide/qsl/hrdlog.md",
+      "user-guide/qsl/clublog-setup.md",
+      "user-guide/qsl/clublog-upload.md",
+      "user-guide/qsl/oqrs.md",
+      "user-guide/qsl/label-printing.md",
+      "user-guide/qsl/print-requested-qsls.md",
+    ]},
+    {"Awards" = [
+      "user-guide/awards/dxcc.md",
+      "user-guide/awards/iota.md",
+      "user-guide/awards/sota.md",
+      "user-guide/awards/sota-csv-export.md",
+      "user-guide/awards/vucc.md",
+      "user-guide/awards/cq.md",
+      "user-guide/awards/was.md",
+      "user-guide/awards/dok.md",
+      "user-guide/awards/wab.md",
+      "user-guide/awards/wap.md",
+    ]},
+    {"Contesting" = [
+      "user-guide/contesting/post-contest-cbr.md",
+      "user-guide/contesting/adif-before-cbr.md",
+    ]},
+    {"Features" = [
+      "user-guide/features/analytics.md",
+      "user-guide/features/notes.md",
+      "user-guide/features/search.md",
+      "user-guide/features/statistics.md",
+      "user-guide/features/quick-lookup.md",
+      "user-guide/features/dx-cluster.md",
+      "user-guide/features/dx-waterfall.md",
+      "user-guide/features/themes.md",
+      "user-guide/features/widgets.md",
+      "user-guide/features/last-qsos-widget.md",
+      "user-guide/features/on-air-widget.md",
+      "user-guide/features/static-maps.md",
+      "user-guide/features/hams-of-note.md",
+      "user-guide/features/qrb-calculator.md",
+      "user-guide/features/kml-files.md",
+    ]},
+    {"Integrations" = [
+      "user-guide/integrations/callsign-lookup.md",
+      "user-guide/integrations/radio-interface.md",
+      "user-guide/integrations/wsjt-x.md",
+      "user-guide/integrations/winkey.md",
+      "user-guide/integrations/log4om.md",
+      "user-guide/integrations/darc-dcl.md",
+      "user-guide/integrations/third-party-tools.md",
+    ]},
+  ]},
+  {"Admin Guide" = [
+    {"Configuration" = [
+      "admin-guide/configuration/config-php.md",
+      "admin-guide/configuration/wavelog-php.md",
+      "admin-guide/configuration/global-options.md",
+      "admin-guide/configuration/https.md",
+      "admin-guide/configuration/webserver.md",
+      "admin-guide/configuration/multi-domain.md",
+      "admin-guide/configuration/centralized-userdata.md",
+      "admin-guide/configuration/maptile-server.md",
+    ]},
+    {"Administration" = [
+      "admin-guide/administration/user-accounts.md",
+      "admin-guide/administration/authentication.md",
+      "admin-guide/administration/station-profiles.md",
+      "admin-guide/administration/station-profiles-deep-dive.md",
+      "admin-guide/administration/station-setup.md",
+      "admin-guide/administration/clubstations.md",
+      "admin-guide/administration/external-clubstations.md",
+      "admin-guide/administration/recommended-setup-clubs.md",
+      "admin-guide/administration/backup.md",
+      "admin-guide/administration/backup-strategies.md",
+      "admin-guide/administration/cron-jobs.md",
+      "admin-guide/administration/maintenance-mode.md",
+      "admin-guide/administration/debug.md",
+      "admin-guide/administration/update-country-files.md",
+      "admin-guide/administration/error-logging.md",
+      "admin-guide/administration/password-reset.md",
+      "admin-guide/administration/server-migration.md",
+      "admin-guide/administration/version-info.md",
+    ]},
+    {"Maintenance" = [
+      "admin-guide/maintenance/reset.md",
+    ]},
+  ]},
+  {"Developer" = [
+    "developer/api.md",
+    "developer/development-notes.md",
+    "developer/style-guide.md",
+    "developer/translations.md",
+  ]},
+  {"Troubleshooting" = [
+    "troubleshooting/adif-cant-import.md",
+    "troubleshooting/lotw-p12-upload.md",
+    "troubleshooting/no-realtime-qso-upload.md",
+    "troubleshooting/migration-locked.md",
+    "troubleshooting/theme-issues.md",
+    "troubleshooting/random-notes.md",
+  ]},
+]
+
+[project.theme]
+
+favicon = "images/favicon.ico"
+
+language = "en"
+
+features = [
+    "content.code.copy",
+    "content.action.edit",
+    "content.action.view",
+    "search.suggest",
+    "search.highlight",
+    "navigation.instant",
+    "navigation.instant.progress",
+    "navigation.tracking",
+    "navigation.prune",
+    "navigation.top",
+    "navigation.tabs",
+    "navigation.tabs.sticky",
+    "toc.follow"
+]
+
+[[project.theme.palette]]
+scheme = "default"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+scheme = "slate"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to light mode"
+
+[project.theme.font]
+text = "Inter"
+code = "Jetbrains Mono"
+
+
+[project.theme.icon]
+repo = "fontawesome/brands/github"
+
+# ----------------------------------------------------------------------------
+# You can configure your own logo to be shown in the header using the "logo"
+# option in the "icons" subsection. The logo can be a path to a file in your
+# "docs_dir" or it can be a path to an icon.
+#
+# Likewise, you can customize the logo used for the repository section of the
+# header. Zensical derives the default logo for this from the repository URL.
+# See below...
+#
+# There are other icons you can customize. See the documentation for details.
+#
+# Read more:
+# - https://zensical.org/docs/setup/logo-and-icons
+# - https://zensical.org/docs/authoring/icons-emojis/#search
+# ----------------------------------------------------------------------------
+#[project.theme.icon]
+#logo = "lucide/smile"
+#repo = "lucide/smile"
+
+[[project.extra.social]]
+icon = "fontawesome/brands/github"
+link = "https://github.com/HB9HIL/testdocs"
+
+[project.markdown_extensions.pymdownx.superfences]
+custom_fences = [
+  { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" }
+]
+
+[project.markdown_extensions.attr_list]
+[project.markdown_extensions.md_in_html]
+[project.markdown_extensions.pymdownx.emoji]
+[project.markdown_extensions.pymdownx.highlight]
+anchor_linenums = true
+line_spans = "__span"
+pygments_lang_class = true
+[project.markdown_extensions.pymdownx.inlinehilite]
+[project.markdown_extensions.pymdownx.snippets]
+[project.markdown_extensions.admonition]
+[project.markdown_extensions.pymdownx.details]
