@@ -112,6 +112,7 @@ nav = [
       "admin-guide/configuration/multi-domain.md",
       "admin-guide/configuration/centralized-userdata.md",
       "admin-guide/configuration/maptile-server.md",
+      "admin-guide/configuration/header_authentication.md",
     ]},
     {"Administration" = [
       "admin-guide/administration/user-accounts.md",
