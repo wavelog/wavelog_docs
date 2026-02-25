@@ -1,7 +1,9 @@
 # Wavelog Documentation
 
-> [!IMPORTANT]
-> This is just a test/preparation and not the official Wavelog Documentation. Check out the current one here https://github.com/wavelog/wavelog/wiki
+This is the source code for the official Wavelog Documentation, built with Zensical.
+The documentation is available at https://docs.wavelog.org/
+
+For contributing to the documentation, please refer to https://docs.wavelog.org/project/contributing/#documentation-guidelines
 
 ## Dependencies
 
