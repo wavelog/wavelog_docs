@@ -1,7 +1,7 @@
 [project]
 
-repo_url = "https://github.com/wavelog/wavelog_docs"
-repo_name = "wavelog/wavelog_docs"
+repo_url = "https://github.com/wavelog/wavelog"
+repo_name = "wavelog/wavelog"
 site_name = "Wavelog Documentation"
 site_description = "Official Documentation for Wavelog"
 site_author = "The Wavelog Dev Team and its community"
