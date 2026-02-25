@@ -2,7 +2,7 @@
 
 !!! info "Welcome to the new Wiki of Wavelog!"
     25th Februrary 2026  
-    This wiki is currently under construction (and probably will be forever). We are working hard to fill it with useful information and guides. We know that there are a lot of outdated pages from the old wiki. Updating and rewriting them is a huge task, but we are doing our best to get it done as soon as possible. If you want to help us with this, please feel free to contribute. You can find more information about how to contribute in the <a href="project/contributing.md#documentation-guidelines">Contributing</a> page. Thank you for your patience and support!
+    This wiki is currently under construction (and probably will be forever). We are working hard to fill it with useful information and guides. We know that there are a lot of outdated pages from the old wiki. Updating and rewriting them is a huge task, but we are doing our best to get it done as soon as possible. If you want to help us with this, please feel free to contribute. You can find more information about how to contribute in the <a href="project/contributing#documentation-guidelines">Contributing</a> page. Thank you for your patience and support!
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/wavelog/wavelog/refs/heads/master/assets/logo/wavelog_logo_default.png" width="400" class="only-light" />
