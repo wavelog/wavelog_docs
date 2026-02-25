@@ -10,7 +10,7 @@ Python with venv Module
 ## Local Development
 
 ```bash
-cd testdocs
+cd wavelog_docs
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt

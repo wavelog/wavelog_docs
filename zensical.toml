@@ -1,11 +1,11 @@
 [project]
 
-repo_url = "https://github.com/HB9HIL/testdocs"
-repo_name = "HB9HIL/testdocs"
-site_name = "HB9HIL Testdocs"
-site_description = "Testing Documentation"
-site_author = "The Wavelog Dev Team and it's community"
-site_url = "https://testdocs.hb9hil.org/"
+repo_url = "https://github.com/wavelog/wavelog_docs"
+repo_name = "wavelog/wavelog_docs"
+site_name = "Wavelog Documentation"
+site_description = "Official Documentation for Wavelog"
+site_author = "The Wavelog Dev Team and its community"
+site_url = "https://docs.wavelog.org/"
 
 copyright = """
 Copyright &copy; 2026 Wavelog
@@ -214,7 +214,7 @@ repo = "fontawesome/brands/github"
 
 [[project.extra.social]]
 icon = "fontawesome/brands/github"
-link = "https://github.com/HB9HIL/testdocs"
+link = "https://github.com/wavelog/wavelog_docs"
 
 [project.markdown_extensions.pymdownx.superfences]
 custom_fences = [
