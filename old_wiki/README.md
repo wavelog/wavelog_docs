@@ -1,0 +1,1 @@
+This is the old wiki backuped at the 25th February 2026. It contains all the content of the wiki until that date, but it is not updated anymore. Please refer to the new documentation for the latest information: https://docs.wavelog.org/
