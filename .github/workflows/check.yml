@@ -1,0 +1,9 @@
+name: PR Check
+on:
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+jobs:
+  lychee:
+    uses: ./.github/workflows/components/lychee-check.yml@master

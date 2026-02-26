@@ -9,7 +9,11 @@ permissions:
   pages: write
   id-token: write
 jobs:
+  lychee:
+    uses: ./.github/workflows/components/lychee-check.yml
+
   deploy:
+    needs: lychee
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

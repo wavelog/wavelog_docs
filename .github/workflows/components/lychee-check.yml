@@ -1,0 +1,16 @@
+# Lychee checks alls docs for dead links and let the pipeline fail if any are found.
+name: Lychee Link Checker
+on:
+  workflow_call:
+permissions:
+  contents: read
+jobs:
+  lychee:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Dead Link Check
+        id: lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          fail: true
