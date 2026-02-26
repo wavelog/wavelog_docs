@@ -45,3 +45,5 @@ The work on this project started at the end of 2023 as a spin-off of the well-kn
 - <a href="https://github.com/wavelog/wavelog" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
 - <a href="https://translate.wavelog.org" target="_blank" rel="noopener noreferrer">Translations Platform</a>
 - <a href="https://status.wavelog.org" target="_blank" rel="noopener noreferrer">Status Page</a>
+
+Testing the PR workflows
