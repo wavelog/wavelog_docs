@@ -12,6 +12,12 @@ jobs:
   lychee:
     uses: ./.github/workflows/lychee-check.yml
 
+  build:
+    uses: ./.github/workflows/build-check.yml
+
+  markdownlint:
+    uses: ./.github/workflows/markdownlint-check.yml
+
   deploy:
     needs: lychee
     environment:
