@@ -9,7 +9,7 @@ Thank you for considering a contribution to Wavelog. The project is developed by
 If you found a bug in Wavelog, please open an issue on GitHub:
 
 - **Application bugs** → [wavelog/wavelog Issues](https://github.com/wavelog/wavelog/issues)
-- **Documentation errors** → [wavelog/wavelog-documentation Issues](https://github.com/wavelog/wavelog-documentation/issues)
+- **Documentation errors** → [wavelog/wavelog-docs Issues](https://github.com/wavelog/wavelog_docs/issues)
 
 Before opening a new issue, search existing ones to avoid duplicates. Include as much detail as possible: Wavelog version, PHP version, browser and steps to reproduce.
 
@@ -54,17 +54,13 @@ See the [Style Guide](../developer/style-guide.md) for frontend conventions.
 - Write in clear, plain English. Avoid jargon where possible.
 - Use admonition blocks (`!!! note`, `!!! tip`, `!!! warning`) for important callouts. See examples here in the [Zensical Docs](https://zensical.org/docs/authoring/admonitions/#supported-types)
 - Screenshots are welcome but must be kept up to date — prefer text instructions where practical.
-- Relative links between pages, not absolute URLs. 
+- If referencing on external ressource, please use anker tags with `target="_blank" rel="noopener noreferrer"` and avoid using `<a>` tags for relative links. Use Markdown syntax for relative links instead.
   Examples:
   ```html
-  <a href="../project/contributing#local-documentation-preview">Local Documentation Preview</a>
-  ```
-  instead of
-  ```html
-  <a href="https://docs.wavelog.org/project/contributing#local-documentation-preview">Local Documentation Preview</a>
-  ```
-  Please use `target="_blank" rel="noopener noreferrer"` for external links.
-  ```html
+  <!-- Relative links never as <a> tag, use Markdown for relative links-->
+  [Local Documentation Preview](../project/contributing.md#local-documentation-preview)
+
+  <!-- External links with anker tags -->
   <a href="https://example.com" target="_blank" rel="noopener noreferrer">External Link</a>
   ```
 

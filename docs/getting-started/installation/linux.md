@@ -151,7 +151,7 @@ QUIT
 
 ### 5. Configure the Webserver
 
-Configure the webserver of your choice according to the [webserver configuration](Webserver-Configurations) page.
+Configure the webserver of your choice according to the [webserver configuration](../../admin-guide/configuration/webserver.md) page.
 
 
 ### 6. Run the Wavelog Installer

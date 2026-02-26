@@ -1,6 +1,6 @@
 # WSJT-X Integration
 
-The WSJT-X software written by K1JT, G4WJS and K9AN is widely used for FT8, FT4, MSK144 and other modes. It can be downloaded from [https://physics.princeton.edu/pulsar/k1jt/wsjtx.html](https://physics.princeton.edu/pulsar/k1jt/wsjtx.html)
+The WSJT-X software written by K1JT, G4WJS and K9AN is widely used for FT8, FT4, MSK144 and other modes. It can be downloaded from [https://wsjt.sourceforge.io/wsjtx.html](https://wsjt.sourceforge.io/wsjtx.html).
 
 Because it logs the contacts you make in both text and ADIF formats on the computer on which WSJT-X is installed, this can be used as a simple means of integrating with Wavelog.
 
