@@ -19,7 +19,7 @@ jobs:
     uses: ./.github/workflows/markdownlint-check.yml
 
   deploy:
-    needs: lychee
+    needs: [lychee, build, markdownlint]
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
