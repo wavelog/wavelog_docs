@@ -41,6 +41,11 @@ A maintainer will review your PR. Please be patient — all contributors work on
 - Keep changes focused. One PR per logical change.
 - Do not include unrelated formatting or whitespace changes.
 - Test your changes locally before submitting.
+- Have a deep look into the code before adding new (sub-)functions to avoid redundancies. Re-use is highly appreciated.
+- When adding code, keep in mind: it has to be safe, scaleable and must run on minimal-ressources as well as in huge environments
+- External Tools are highly appreciated, but please discuss/ask for new API-Endpoints before adding them for your tool. This saves effort on both sides
+- When using AI/CodePilot which supports you during development, please be able to understand what you and your AI contributes. Be prepared for questions.
+- Pure AI Pull-Requests will be rejected.
 
 See the [Style Guide](../developer/style-guide.md) for frontend conventions.
 
