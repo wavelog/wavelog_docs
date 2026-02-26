@@ -1,6 +1,6 @@
 # OpenBSD
 
-This page will guide you through the steps required to install Wavelog onto an OpenBSD web server that is using the OHMP stack (that's OpenBSD, httpd, MariaDB and PHP). Most of the text has been taken from the page [Installation on a FreeBSD Server](https://github.com/wavelog/Wavelog/wiki/Installation-on-a-FreeBSD-Server) and adapted to OpenBSD.
+This page will guide you through the steps required to install Wavelog onto an OpenBSD web server that is using the OHMP stack (that's OpenBSD, httpd, MariaDB and PHP). Most of the text has been taken from the page [Installation on a FreeBSD Server](../installation/freebsd.md) and adapted to OpenBSD.
 
 # Prerequisites
 
@@ -10,6 +10,7 @@ This page will guide you through the steps required to install Wavelog onto an O
 * [PHP](https://www.php.net) 8.0
 
 # Installation
+
 ## 1. Prepare Server Stack
 
 Installing OpenBSD, database server and web server are tasks that are outside the scope of this guide but there are plenty of resources to help you get started. Have a look at this [guide](http://www.h-i-r.net/p/setting-up-openbsd-relayd-based-httpd.html) or at the corresponding man pages.
@@ -20,7 +21,7 @@ Once you have your server stack installed, make sure that the required additiona
 doas pkg_add php-mysqli mariadb-server curl php-curl
 ```
 
-Please choose version 8.0 when asked by the installer. 
+Please choose version 8.0 when asked by the installer.
 
 ## 2. Download Wavelog using Git
 
@@ -31,6 +32,7 @@ The `git clone` command is used to fetch the latest build of Wavelog from the re
 ```bash
 doas git clone https://github.com/wavelog/Wavelog.git [output_directory]
 ```
+
 Replace _output_directory_ with the full path to the directory where you'd like the application files to be created locally (don't include the square brackets). In this example, we use the DocumentRoot directory "/var/www/htdocs/wavelog":
 
 ```bash
@@ -51,7 +53,6 @@ The following folders need to be writable by PHP:
 * /uploads
 * /images/eqsl_card_images/
 
-
 ⚠️ **Warning 1**: The following commands assume that you are using the OpenBSD _www_ webserver group. You should verify this is the case and modify the commands below appropriately if it is something different.
 
 ⚠️ **Warning 2**: Replace `/var/www/htdocs/wavelog` in the below commands with the appropriate directory if you cloned the Git repository somewhere else in the previous step.
@@ -59,6 +60,7 @@ The following folders need to be writable by PHP:
 **⚠️ Warning 3**: It is your responsibility to ensure you protect your system from intruders/attacks. These commands and permissions are just examples used to get Wavelog up and running and are not a guide on how to achieve a secure system. You should review these permissions after installation and make appropriate changes if you determine that finer-grained access control is needed.
 
 First, set ownership using:
+
 ```bash
 doas chown -R root:www /var/www/htdocs/wavelog/application/config/
 doas chown -R root:www /var/www/htdocs/wavelog/application/logs
@@ -70,6 +72,7 @@ doas chown -R root:www /var/www/htdocs/wavelog/images/eqsl_card_images/
 ```
 
 Then grant write permissions on these directories to the group:
+
 ```bash
 doas chmod -R g+rw /var/www/htdocs/wavelog/application/config/
 doas chmod -R g+rw /var/www/htdocs/wavelog/application/logs
@@ -80,7 +83,7 @@ doas chmod -R g+rw /var/www/htdocs/wavelog/uploads
 doas chmod -R g+rw /var/www/htdocs/wavelog/images/eqsl_card_images/
 ```
 
-More info about granting PHP write permissions can be read [here](https://unix.stackexchange.com/questions/35711/giving-php-permission-to-write-to-files-and-folders)
+More info about granting PHP write permissions can be read in [this Unix Stack Exchange answer](https://unix.stackexchange.com/questions/35711/giving-php-permission-to-write-to-files-and-folders)
 
 ## 4. Create a SQL Database and User
 
@@ -131,13 +134,13 @@ We need to configure some items inside the file `/etc/php-8.0.ini` that are requ
 
 Please find and adapt the following line:
 
-```
+```conf
 allow_url_fopen = On
 ```
 
 Also uncomment the following modules inside the above mentioned file:
 
-```
+```conf
 extension=bz2
 extension=curl
 extension=mbstring
@@ -158,4 +161,4 @@ When you have completed the install wizard, do the following:
 
 # Post-Install Tasks
 
-The OpenBSD install tutorial ends here and refers to the probably more regularily updated [Linux Installation Guide](https://github.com/wavelog/Wavelog/wiki/Installation) for the post-install tasks.
+The OpenBSD install tutorial ends here and refers to the probably more regularily updated [Linux Installation Guide](../installation/linux.md) for the post-install tasks.

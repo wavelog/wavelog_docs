@@ -1,0 +1,25 @@
+{
+  // Enable all rules by default, then selectively disable
+  "default": true,
+
+  // MD013: Line length — too strict for docs with URLs, tables, and code blocks
+  "MD013": false,
+
+  // MD033: Inline HTML — MkDocs uses attr_list and md_in_html extensions
+  "MD033": false,
+
+  // MD041: First line should be top-level heading — many pages intentionally start with ##
+  "MD041": false,
+
+  // MD025: Multiple top-level headings — some pages have no H1 at all
+  "MD025": false,
+
+  // MD024: No duplicate headings — section names like "Configuration" legitimately repeat
+  "MD024": false,
+
+  // MD046: Code block style — historical mix of indented and fenced blocks
+  "MD046": false,
+
+  // MD060: Table column style — pure formatting preference, too noisy for existing content
+  "MD060": false
+}

@@ -4,6 +4,7 @@ Quick Lookup was made so that you quickly can check what you have worked on whic
 To use Quick Lookup, use Alt-L to get the dialog.
 
 You can then search the following:
+
 * CQ Zone
 * DXCC
 * Gridsquare
@@ -12,4 +13,3 @@ You can then search the following:
 * US State
 * WWFF
 * LoTW user
-

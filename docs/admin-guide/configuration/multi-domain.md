@@ -4,7 +4,7 @@ Wavelog is able to be accessible from different URL's. If your Wavelog instance 
 
 ```php
 <?php
-$config['base_url']	= 'https://wavelog.example.com/';
+$config['base_url'] = 'https://wavelog.example.com/';
 ```
 
 However in some cases you want your Wavelog instance make accessible from different domains you can replace the line with this:

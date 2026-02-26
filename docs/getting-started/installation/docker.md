@@ -91,9 +91,9 @@ You should see `wavelog-db` and `wavelog-main` listed with status `Up`.
 Open your browser and navigate to this URL:
 
 !!! note "Reverse Proxy in place?"
-    If you have an reverse proxy in place you might want to directly call the final URL since Wavelog will configure itself to the URL you are calling the installer. Although it can be changed later you have save the extra work and call the final URL diretcly. 
+    If you have an reverse proxy in place you might want to directly call the final URL since Wavelog will configure itself to the URL you are calling the installer. Although it can be changed later you have save the extra work and call the final URL diretcly.
 
-```
+```text
 http://[your-server-ip]:8086/install
 ```
 
@@ -135,8 +135,8 @@ server {
 
 ### Tweaking config.php
 
-Check out the [configuration guide](../../admin-guide/configuration/config-php.md) to find out how to tweak `config.php` for your needs. 
-In a docker setup you will find the config file __after__ the installation in the `wavelog-config` volume. You can edit it there. A restart of the `wavelog-main` container is not required, changes are applied immediately.
+Check out the [configuration guide](../../admin-guide/configuration/config-php.md) to find out how to tweak `config.php` for your needs.
+In a docker setup you will find the config file **after** the installation in the `wavelog-config` volume. You can edit it there. A restart of the `wavelog-main` container is not required, changes are applied immediately.
 
 This file must not exist before the installation, otherwise the installer will not run. During the installation, it is copied to the right place and can be edited there. If you want to reset the installation, see the guide here: [Resetting the installation](../../admin-guide/maintenance/reset.md).
 

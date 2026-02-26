@@ -1,4 +1,4 @@
-## Instance-Backup:
+## Instance-Backup
 
 To Backup your whole instance, we recommend two things:
 1.) Database Backup
@@ -10,7 +10,8 @@ Here is an **example** how you can do that, if you're on a linux-Machine like De
 
 Create two files at `/etc/backup.d`:
 First one: `10-db.mysql`:
-```
+
+```conf
 ### backupninja mysql config file ###
 
 databases   = all
@@ -24,8 +25,10 @@ dbusername = [root_at_db]
 dbpassword = [root_pass]
 dbhost = 127.0.0.1
 ```
+
 Second one: `90.borg`:
-```
+
+```conf
 ## for more options see
 ## - example.borg
 ## - http://borgbackup.readthedocs.io/en/stable
@@ -50,9 +53,9 @@ encryption = none
 passphrase =
 ```
 
-After you've done that, your system creates a full-backup of database, wavelog and it's (e)QSL-Cards and so on every night at 01:00. 
+After you've done that, your system creates a full-backup of database, wavelog and it's (e)QSL-Cards and so on every night at 01:00.
 
-The backup will be stored at `/backup/my_wavelog`. you can access it via `borg mount /backup/my_wavelog /mnt` easily. 
+The backup will be stored at `/backup/my_wavelog`. you can access it via `borg mount /backup/my_wavelog /mnt` easily.
 
 After mounting you've the last 15days in subfolders in `/mnt`. Don't forget to umount (`borg umount /mnt`) after restoring it.
 
@@ -61,42 +64,53 @@ For more informations about the toolchain have a look at backupninja and borgbac
 This is only one way / one example for a backupsolution.
 
 ## Docker-Backup manually
-A manual backup of your docker container is quite easy. To make sure data is consistent we have to stop the container first. 
-```
+
+A manual backup of your docker container is quite easy. To make sure data is consistent we have to stop the container first.
+
+```bash
 sudo docker compose down
 ```
-In the next step we define the backup path and making sure it exists.** Don't run this command as root**
-```
+
+In the next step we define the backup path and making sure it exists.**Don't run this command as root**
+
+```bash
 BACKUP_DIR=/home/$USER/wavelog_backup
 mkdir -p $BACKUP_DIR
 ```
+
 Now we can copy the data. We make a copy of the docker compose file and compress the docker volumes into a tar.gz file
-```
+
+```bash
 cp docker-compose.yml $BACKUP_DIR/
 sudo tar czf "$BACKUP_DIR/wavelog_volumes_$(date +%F).tar.gz" -C /var/lib/docker/volumes $(sudo find /var/lib/docker/volumes -maxdepth 1 -type d -name 'wavelog*' -printf '%f\n')
 ```
 
 To restore a backup copy the docker compose file and decompress the tar.gz file
-```
+
+```bash
 sudo tar xzf wavelog_volumes_2025-04-30.tar.gz -C /var/lib/docker/volumes
 ```
 
 ## Docker SQL Dump
+
 Dump
+
 ```bash
 docker exec wavelog-db mariadb-dump -u [DB_USER] -p'[DB_PASS]' [DB_NAME] > wavelog_backup.sql
 ```
 
 Restore
+
 ```bash
 docker exec -i wavelog-db mariadb -u [DB_USER] -p'[DB_PASS]' [DB_NAME] < wavelog_backup.sql
 ```
 
-
 ## Docker-Backup with Borg
+
 This is another backup method that stops the docker containers before the backup and restarts them after the backup is done to ensure the integrity of the database. Stopping the container is essential to avoid data loss.
 Change the values according to your needs and put the file into `/etc/borgmatic/wavelog.yaml`:
-```
+
+```yaml
 
 source_directories:
     - /home/phil/docker/wavelog
@@ -153,8 +167,10 @@ before_backup:
 after_backup:
   - docker compose -f /home/phil/docker/wavelog/docker-compose.yml up -d
 ```
+
 Then add a systemd timer file (`/etc/systemd/system/borgmatic-wavelog.timer`) that schedules the backups. I run them at 04:20 and 15:30 each day:
-```
+
+```conf
 [Unit]
 Description=Run Borgmatic Backup for wavelog
 
@@ -166,4 +182,5 @@ Persistent=true
 [Install]
 WantedBy=timers.target
 ```
+
 Reload systemd to apply the timer: `sudo systemctl daemon-reload`

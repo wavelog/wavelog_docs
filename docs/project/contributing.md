@@ -25,9 +25,11 @@ Documentation lives in a separate repository and is always a good entry point fo
 
 1. Fork the repository on GitHub.
 2. Create a feature branch from `dev`:
-   ```
+
+   ```bash
    git checkout -b describe-your-change
    ```
+
 3. Make your changes and commit with a descriptive message.
 4. Push your branch and open a pull request against `dev`.
 5. Describe what you changed and why in the PR description.
@@ -37,7 +39,7 @@ A maintainer will review your PR. Please be patient — all contributors work on
 ## Code Guidelines
 
 - Wavelog is built on **CodeIgniter 3**, **Bootstrap** and **jQuery**.
-- Follow existing code style — __consistency matters more than personal preference__.
+- Follow existing code style — **consistency matters more than personal preference**.
 - Keep changes focused. One PR per logical change.
 - Do not include unrelated formatting or whitespace changes.
 - Test your changes locally before submitting.
@@ -56,6 +58,7 @@ See the [Style Guide](../developer/style-guide.md) for frontend conventions.
 - Screenshots are welcome but must be kept up to date — prefer text instructions where practical.
 - If referencing on external ressource, please use anker tags with `target="_blank" rel="noopener noreferrer"` and avoid using `<a>` tags for relative links. Use Markdown syntax for relative links instead.
   Examples:
+
   ```html
   <!-- Relative links never as <a> tag, use Markdown for relative links-->
   [Local Documentation Preview](../project/contributing.md#local-documentation-preview)

@@ -5,22 +5,23 @@ SimpleFLE ("Simple Fast Log Entry") is a syntax-based way to log multiple QSOs w
 - [QSO Table](#the-qso-table)  
 - [Basic Configuration](#basic-configuration)  
 - [Textarea and Syntax](#textarea-and-syntax)
-   - [Change band and/or mode](#change-band-andor-mode)
-   - [Change date](#change-date)
-   - [Add a QSO](#add-a-qso)
-      - [Time](#time)
-      - [Callsign](#callsign)
-      - [RST](#rst)
-      - [Reference (SOTA, POTA, IOTA, WWFF)](#reference)
-      - [Gridsquare](#gridsquare)
-      - [Operator name](#operator-name) (since v2.0)
-      - [Contest exchange](#contest-exchange) (since v2.0)
-      - [Comments and QSL-message](#comments-and-qsl-message) (since v2.0)
-      - [Additional fields](#additional-fields) (since v2.0)
+  - [Change band and/or mode](#change-band-andor-mode)
+  - [Change date](#change-date)
+  - [Add a QSO](#add-a-qso)
+    - [Time](#time)
+    - [Callsign](#callsign)
+    - [RST](#rst)
+    - [Reference (SOTA, POTA, IOTA, WWFF)](#reference)
+    - [Gridsquare](#gridsquare)
+    - [Operator name](#operator-name) (since v2.0)
+    - [Contest exchange](#contest-exchange) (since v2.0)
+    - [Comments and QSL-message](#comments-and-qsl-message) (since v2.0)
+    - [Additional fields](#additional-fields) (since v2.0)
 
 Due to the fact that the syntax of SimpleFLE is slightly different from the original FLE, we created this Wiki to give a detailed explanation of how things work here.
 
 ## The QSO Table
+
 <img width="800" alt="QSO Table" src="https://github.com/wavelog/wavelog/assets/80885850/9a6349b2-2401-4d66-8f47-7396126449dc">
 
 Entered QSOs will be shown here. Double-check all callsigns and other data before saving it to Wavelog!
@@ -55,10 +56,11 @@ This is the place where you enter your QSOs. The syntax is based on lines and 's
 _Line Operators_ are used to change the band, mode, or date. All following QSOs will have these values.
 
 #### Change band and/or mode
+
 All modes which are implemented in your Wavelog Instance are supported.  
 **SEGMENTS:** `BAND/FREQ  |  MODE`
 
-```
+```text
 20m ssb
 17m
 70cm fm
@@ -66,7 +68,8 @@ am
 ```
 
 To change the frequency, use MHz and a dot as the decimal sign.
-```
+
+```text
 10.112 cw
 7.145
 ```
@@ -74,33 +77,37 @@ To change the frequency, use MHz and a dot as the decimal sign.
 #### Change date
 
 Add a day to the last date that was set. One day for each `+` sign.
-```
+
+```text
 day +
 day ++
-... 
+...
 ```
 
 Another way to change the date is by typing it directly in the format YYYY-MM-DD
-```
+
+```text
 date 2024-05-21
 ```
 
 ### Add a QSO
+
 Adding QSOs is quite simple. Just type at least the required segments and add information accordingly.  
   
 **REQUIRED SEGMENTS:** `TIME  |  CALLSIGN   ...`  
 **OPTIONAL SEGMENTS:** `...   |  RST(s) |  RST(r) | GRIDSQUARE |  REFERENCE`
 
 #### Time
+
 In the first line, you need to start with a full time `HHMM`, written without `:` (UTC).
 
-```
+```text
 1734 4W7EST
 ```
 
 In all following lines, you just need to type in the change value.
 
-```
+```text
 1734 4W7EST
 5 HB9HIL         -> QSO was at 17:35 UTC
 1800 DJ7NT       -> QSO was at 18:00 UTC
@@ -108,9 +115,10 @@ In all following lines, you just need to type in the change value.
 ```
 
 #### Callsign
-The callsign always needs to be the second segment after the QSO time. It can be with or without pre- and/or suffixes. The callsign can be upper or lower case. 
 
-```
+The callsign always needs to be the second segment after the QSO time. It can be with or without pre- and/or suffixes. The callsign can be upper or lower case.
+
+```text
 1703 LA8AJA/P
 8 hb0/f4ans
 23 dl/4w7est/m
@@ -118,9 +126,9 @@ The callsign always needs to be the second segment after the QSO time. It can be
 
 #### RST
 
-The signal report is divided into two segments: `RST(s)` and `RST(r)` (in this order). Both are optional! 
+The signal report is divided into two segments: `RST(s)` and `RST(r)` (in this order). Both are optional!
 
-```
+```text
 40m lsb
 1337 DJ7NT        -> No RST. SFLE will use default RST for the used mode. E.g. 59 for SSB, 599 for CW and 0db for FT8
 
@@ -133,28 +141,32 @@ ft8
 ```
 
 #### Reference
+
 The reference for SOTA, IOTA, POTA, and WWFF is recognized by SimpleFLE fully automatically.
 
-```
+```text
 10m cw
 0732 hb9/la8aja hbff-0499     ->  07:32 UTC - LA8AJA - RST defaults - WWFF Ref: HBFF-0499
 3 dj7nt de-0034               ->  07:33 UTC - DJ7NT - RST defaults - POTA Ref: DE-0034
 ```
+
 The reference type is indicated in the QSO table by the first letter of the reference type.  
 <img width="135" alt="image" src="https://github.com/wavelog/wavelog/assets/80885850/02a689e6-e574-4e15-9a36-83036316d330">  
 <img width="406" alt="image" src="https://github.com/wavelog/wavelog/assets/80885850/486111d3-c487-4994-b0fe-8d393d2390ed">
 
 ##### Special: "POTA 2fer" - Multiple Parks in POTA
+
 POTA activators can have multiple references. From Wavelog Version 1.9.0 SimpleFLE supports multiple POTA references divided by commas `,`. Make sure there is **no space** after the comma!
 
-```
+```text
 3 HB9HGG ch-0067,ch-0068
 ```
 
 #### Gridsquare
+
 To set the gridsquare of your QSO partner just type the grid after the callsign or RST (but before reference). You may prefix the gridsquare with a hash `#`. Supported are 4-10 digit locators (JN47, JO31DH56, JD46SH ...).
 
-```
+```text
 1245 la8aja jo61dh
 1246 la8aja #jo61dh
 ```
@@ -163,7 +175,7 @@ To set the gridsquare of your QSO partner just type the grid after the callsign 
 
 As in the FLE specification, the operator name may be set by prefixing it with the at-symbol `@`:
 
-```
+```text
 1234 dn5ce @Anne
 ```
 
@@ -173,14 +185,15 @@ The contest exchange parsing differs from the original FLE specification, as it 
 
 Use a prefix comma (`,`) to denote sent exchange and a period (`.`) for received exchange. Both, comma and period may appear multiple times and do not need to be separated by spaces. Purely numeric characters will set the serial (technically: `srx` and `stx` ADIF-fields), whereas everything else (alphanumeric and slash) will set the exchange string (technically: `srx_string` and `stx_string` ADIF-fields).
 
-```
+```text
 2112 dn5ce ,1.12         <-- Sent 1, received 12
 2114 dn5ce ,2,EU.NM      <-- Sent 2 and EU, received NM
 2116 dn5ce ,3.123.AS     <-- Sent 3 and EU (persisted!), received 123 and AS
 ```
+
 To clear the sent exchange use `,-`. To enable incrementing the sent serial automatically, use `,++` and disable it with `,+0`:
 
-```
+```text
 80m ,++                  <-- Set autoincrement
 2110 dn5ce .73 ,1,EU     <-- Sent 1 and EU, received 73
 2112 dn5ce .72           <-- Sent 2 and EU, received 72
@@ -192,30 +205,29 @@ To clear the sent exchange use `,-`. To enable incrementing the sent serial auto
 
 To include a QSL-message put it in square brackets, surround comments by angle brackets:
 
-```
-2359 dn5ce @Anne [Tnx fer fb qrq qso!] <QSO at 35wpm, fun time!> 
+```text
+2359 dn5ce @Anne [Tnx fer fb qrq qso!] <QSO at 35wpm, fun time!>
 ```
 
 #### Additional fields
 
 Using the comment-syntax, all implemented ADIF-fields may be set by naming the field, followed by a colon in the comment:
 
-```
+```text
 2312 dn5ce <tx_pwr:50> <rx_pwr:750> <darc_dok:F39> <sfi:210> <rig:QRPlabs QCX> <notes: …enter the notes-field>
 ```
 
-The field `tx_pwr` and fields starting with `my_` are retained and *not reset* between QSOs - setting an empty value resets the field. Some `my_`-fields **will be overwritten** by station-location details.
-
+The field `tx_pwr` and fields starting with `my_` are retained and _not reset_ between QSOs - setting an empty value resets the field. Some `my_`-fields **will be overwritten** by station-location details.
 
 ADIF-exports may include fields not visible in Wavelog, like `sfi` or `rx_pwr` from the example.
 
 ## Development Progress
 
-Currently in work is a "Callbook Lookup" feature to lookup callsigns automatically [from the set callbook](https://github.com/wavelog/Wavelog/wiki/Callsign-Lookup).
+Currently in work is a "Callbook Lookup" feature to lookup callsigns automatically [from the set callbook](../../user-guide/integrations/callsign-lookup.md).
 
-
-*** 
+***
 
 Links:
+
 - Original Project by DF3CB: [https://df3cb.com/fle/](https://df3cb.com/fle/)
 - SimpleFLE written by OK2CQR: [https://github.com/ok2cqr/sfle](https://github.com/ok2cqr/sfle)

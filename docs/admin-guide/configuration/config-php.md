@@ -26,7 +26,7 @@ Options are:
 - `hamqth`
 - `qrzru`
 
-Additional details are available at: [Callbooks integration](https://github.com/wavelog/Wavelog/wiki/Callsign-Lookup)
+Additional details are available at: [Callbooks integration](../../user-guide/integrations/callsign-lookup.md)
 
 Examples:
 
@@ -41,7 +41,7 @@ $config['callbook'] = 'qrz'; // Will retrieve callsigns data from QRZ.com
 Starting from release 2.2.2 (to be confirmed), this callbook variable can be set to an array of values indicating the sequence of callbooks to be tested until a valid result is returned. Callbooks are tested using the same sequence as configured in the callbook configuration variable. If no data is returned from the first source, the second one is tested, and so on.
 
 !!! note
-    This does not always fetch all sources, the sequence is only respected if no data is returned at all (e.g: callsign is not registered on that service, of if the service is unreachable. 
+    This does not always fetch all sources, the sequence is only respected if no data is returned at all (e.g: callsign is not registered on that service, of if the service is unreachable.
 
 !!! note
     If an user is registered on a given service, but some details were not available, it is still considered as a "valid" result and no additional sources will be tested.
@@ -58,7 +58,7 @@ $config['callbook'] = ['hamqth', 'qrzcq', 'qrz']; // HamQTH => QRZCQ => QRZ.com
 
 #### Callbooks full name lookup
 
-If the API of the configured service returns the full name for a given callsign, this is only stored if the use_fullname option is set to `true`. 
+If the API of the configured service returns the full name for a given callsign, this is only stored if the use_fullname option is set to `true`.
 
 !!! warning
     As people's full name is considered a sensitive information, make sure data is secured as per GDPR regulations
@@ -134,9 +134,10 @@ $config['log_threshold'] = 0;
 
 If your server is behind a reverse proxy, you must whitelist the proxy IP addresses from which CodeIgniter should trust headers such as HTTP_X_FORWARDED_FOR and HTTP_CLIENT_IP in order to properly identify the visitor's IP address.
 
-You can use both an array or a comma-separated list of proxy addresses, as well as specifying whole subnets. 
+You can use both an array or a comma-separated list of proxy addresses, as well as specifying whole subnets.
 
 Here are a few examples:
+
 ```php
 $config['proxy_ips'] = '10.0.1.200,192.168.5.0/24';
 $config['proxy_ips'] = 'array('10.0.1.200', '192.168.5.0/24')';
@@ -144,7 +145,7 @@ $config['proxy_ips'] = 'array('10.0.1.200', '192.168.5.0/24')';
 
 ### QSL services
 
-Per each user, in the account settings, an username and password should be configured to send and received eletronic QSLs. 
+Per each user, in the account settings, an username and password should be configured to send and received eletronic QSLs.
 
 #### Manual QSL synchronization
 
@@ -171,7 +172,7 @@ $config['disable_qsl'] = false;
 
 For each user, a dedicated page can be used for DXs to request QSL, this feature can be disabled by setting the following option.
 
-Additional details are available here: [OQRS Widget](https://github.com/wavelog/wavelog/wiki/OQRS-(Online-Qsl-Request-System)#add-iframe-of-oqrs-request)
+Additional details are available here: [OQRS Widget](../../user-guide/qsl/oqrs.md)
 
 ```php
 $config['disable_oqrs'] = false;

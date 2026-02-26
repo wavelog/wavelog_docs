@@ -19,18 +19,19 @@ Another issue is that the default map provider of Wavelog does not have a licens
 
 To change the default provider, you may have to update the value of row `map_tile_server` of table `option` in the database
 
-
 ## API-Ratelimiting (Requires Wavelog V2.2.3 at least)
+
 You can now rate-limit API-Calls. Note: It isn't enabled by default!
 
 The Ratelimiter checks the API-Key. Reading-Example for `'lookup' => ['requests' => 100, 'window' => 60],`:
+
 - Allow 100 Requests for ONE API-Key within a sliding 60sec. Windows
 - Exceeded? 429 returned
 - This is per key/session. So if you have two Users doing 150 or up to 200 requests per 60seconds in sum, it is fine.
 
 Edit your `config.php` and add the following entries to it / adjust it to your needs:
 
-```
+```php
 $config['api_rate_limits'] = [
      'private_lookup' => ['requests' => 60, 'window' => 60],
      'lookup'         => ['requests' => 100, 'window' => 60],

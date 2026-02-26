@@ -1,13 +1,14 @@
 # Important (for all 3rd party services)
+
 Wavelog WON'T Download your full log.
 You need to have the QSO already in your log. Wavelog ONLY uses the 3rd party-services for QSL (confirmations).
 Once a confirmation (for a logged entry) is fetched you'll see a "green downpointing arrow" indicating the QSO has been confirmed.
 
 # LoTW
+
 Wavelog allows interaction with the ARRL Logbook of the World system, both for uploading QSOs and downloading confirmations. This is accessed via _**Admin -> Third Party Services -> Logbook of the World via the main menu and you will see something similar to the screenshot below.
 
 <img width="1346" alt="image" src="https://github.com/wavelog/wavelog/assets/1410708/6fbbb426-ecef-4fd7-a3df-70e1b28cc5c4">
-
 
 If you haven't uploaded any certificates you will get a notification to upload once this is done you will get a table with some basic fields
 
@@ -23,7 +24,7 @@ There are two methods of importing data from LOTW, the first requires an ADIF fi
 
 The second method pulls data directly from the LOTW website. **To enable this mode, the account must have a username and password set on the account settings page (`<domain>/user/edit/<number>`), under third-party services.** The `.p12` certificate is used for uploading logs, but not for downloading matches. (For US-based 1x1 callsign stations, the username and password should be for the primary account that requested the LOTW certificate for the 1x1, since you will not have a LOTW login for the 1x1 itself.)
 
-The automatic pull from the website is run via the `lotw_lotw_upload` cron job in Cronmanager; it cannot be run manually. (The screenshot showing a button above is out of date.) 
+The automatic pull from the website is run via the `lotw_lotw_upload` cron job in Cronmanager; it cannot be run manually. (The screenshot showing a button above is out of date.)
 
 ## P12 File Uploading
 
@@ -47,7 +48,7 @@ Uploading to (using certificates) and downloading from (using a username and pas
 
 * Station Location County must be exactly as LoTW would set it for example state **OR** and county **Deschutes**
 
-### Canada 
+### Canada
 
 * Canadian Provinces is now supported, make sure you select your province via the state drop-down in the Station Location area.
 

@@ -11,7 +11,7 @@ At any time you can come to this section and delete keys to remove access.
 
 ## General workflow
 
-1. Add a new API key to your account using the dedicated option in the user menu 
+1. Add a new API key to your account using the dedicated option in the user menu
    - Depending on the API request, a read or read+write key is required
 2. Perform a `POST` request to the API endpoint
    - The request should specify both the `Content-Type` which should be set to `application/json` and `Accept` which should be also set to `application/json`
@@ -45,10 +45,11 @@ curl -X POST https://<WAVELOG_URL>/index.php/api/qso -H "Content-Type: applicati
 **Note:** the `station_profile_id` field can be found when editing a station profile, the relevant ID its a number and can be retrieved by looking at the URL string.
 
 #### Important
+
 Whenever you post QSOs to the API (via WavelogGate, via WSJT-X Improved, via $tool):
+
 - it doesn't live post the QSO to QRZ (even if enabled), because of performance/errrorhandling/etc.
 - it doesn't lookup the QSO-Partner at $callbook, because of performance/errrorhandling/etc.
-
 
 ### `api/get_contacts_adif`
 
@@ -56,7 +57,7 @@ This function allows you to stream json-embedded ADIF Exports from Wavelog for i
 
 Payload to be sent to the API endpoint:
 
-```javascript
+```json
 {
     "key": "YOUR_API_KEY",   // API-Key, read-only at least
     "station_id": "Station Profile ID Number",  // Station ID for the station that we want to pull QSOs from
@@ -66,7 +67,7 @@ Payload to be sent to the API endpoint:
 
 Example of API response:
 
-```javascript
+```json
 {
     "exported_qsos":5,   // The number of exported QSOs
     "lastfetchedid":4886,  // The internal primary key of the last exported QSO for you to use in your next input
@@ -80,9 +81,9 @@ Example of API response:
 #### Standard Radio API Call
 
 !!! tip
-    An example of a Python code to send radio data to Wavelog can be found [here](https://github.com/wavelog/wavelog/wiki/Radio-Interface)
+    An example of a Python code to send radio data to Wavelog can be found in the [Radio Interface wiki page](../user-guide/integrations/radio-interface.md)
 
-```javascript
+```json
 {
    "key":"YOUR_API_KEY", 
    "radio":"FT-950",
@@ -95,7 +96,7 @@ Example of API response:
 
 #### Extended Radio API Call
 
-```javascript
+```json
 {
     "key": "YOUR_API_KEY",          // API-Key
     "radio": "QO-100 Station",      // Name of the radio (used for assigning received data)
@@ -111,7 +112,7 @@ Example of API response:
 
 #### Satellite Data
 
-```javascript
+```json
 {
    "key":"YOUR_API_KEY",
    "radio":"SATPC32",
@@ -132,9 +133,9 @@ Example of API response:
     This feature was introduced in Wavelog v2.1.1
 
 !!! warning
-    Changing the callback URL for a radio might disrupt normal work of other application (like WavelogGate). Read more about callback URLs [here](https://github.com/wavelog/Wavelog/wiki/Radio-Interface).
+    Changing the callback URL for a radio might disrupt normal work of other application (like WavelogGate). Read more about callback URLs in the [Radio Interface wiki page](../user-guide/integrations/radio-interface.md).
 
-```javascript
+```json
 {
   "key": "your_api_key_here",                 // Read+write API key
   "radio": "FT-950",                          // Arbitrary name to identify this device
@@ -150,7 +151,7 @@ Example of API response:
 
 This endpoint allows you to check if a callsign is in the logbook
 
-```javascript
+```json
 {
     "key":"", // Wavelog API Key
     "logbook_public_slug":"", // This is the Station Logbook Public Slug
@@ -163,7 +164,7 @@ This endpoint allows you to check if a callsign is in the logbook
 
 This allows you to check if a grid is in the logbook
 
-```javascript
+```json
 {
     "key":"", // Wavelog API Key
     "logbook_public_slug":"", // This is the Station Logbook Public Slug
@@ -176,10 +177,10 @@ This allows you to check if a grid is in the logbook
 
 Returns the active profile stats that would show on the dashboard
 
-* Todays QSOs
-* Months QSOs
-* Years QSOs
-* Total QSOs
+- Todays QSOs
+- Months QSOs
+- Years QSOs
+- Total QSOs
 
 !!! note
     For this to work via V2 of Wavelog and public access (i.e. not logged in) you need to provide a valid (e.g. read-only) API key in the URL. That simply needs to be set on the URL like: `https://your.wavelog.url/index.php/api/statistics/clPutYourApiKeyHere`
@@ -188,21 +189,21 @@ Returns the active profile stats that would show on the dashboard
 
 Returns information about stations (logbook locations) belonging to the user who has the corresponding API key:
 
-```javascript
+```json
 [
   {
-    station_id: "1",
-    station_profile_name: "JO30oo / DJ7NT",
-    station_gridsquare: "JO30OO",
-    station_callsign: "DJ7NT",
-    station_active: "1"
+    "station_id": "1",
+    "station_profile_name": "JO30oo / DJ7NT",
+    "station_gridsquare": "JO30OO",
+    "station_callsign": "DJ7NT",
+    "station_active": "1"
   },
   {
-    station_id: "2",
-    station_profile_name: "JO30oo / DO7INT",
-    station_gridsquare: "JO30OO",
-    station_callsign: "DO7INT",
-    station_active: null
+    "station_id": "2",
+    "station_profile_name": "JO30oo / DO7INT",
+    "station_gridsquare": "JO30OO",
+    "station_callsign": "DO7INT",
+    "station_active": null
   }
 ]
 ```
@@ -219,7 +220,7 @@ This api checks the (API-)owners logbook for confirmations.
 
 Request to be sent to the API endpoint:
 
-```javascript
+```json
 {
   "key":"[key]",
   "callsign":"VK4XY",
@@ -229,7 +230,8 @@ Request to be sent to the API endpoint:
 ```
 
 You may add the key `callbook` and set it to `true` if you also want to retrieve callbook-information. This feature comes with Wavelog 2.2.3. e.g.:
-```
+
+```json
 {
   "key":"[key]",
   "callsign":"VK4XY",
@@ -247,7 +249,7 @@ curl https://[URL]/api/private_lookup -X POST -d '{"key":"[key]","callsign":"VK4
 
 returns:
 
-```javascript
+```json
 {
     "callsign": "VK4XY",
     "dxcc": "AUSTRALIA",
@@ -281,24 +283,27 @@ returns:
 
 Mandatory Fields within payload:
 
-* key (your API-Key from AccountSettings --> API)
-* callsign (the Call you want to check)
+- key (your API-Key from AccountSettings --> API)
+- callsign (the Call you want to check)
 
 Optional Fields:
 
 band:
-* if given: api checks if the DXCC of the call was confirmed for this band
-* if not given: dxcc_confirmed_on_band and dxcc_confirmed_on_band_mode will be false as well as call_confirmed_band and call_confirmed_band_mode
+
+- if given: api checks if the DXCC of the call was confirmed for this band
+- if not given: dxcc_confirmed_on_band and dxcc_confirmed_on_band_mode will be false as well as call_confirmed_band and call_confirmed_band_mode
 
 mode:
-* if given: api checks if the DXCC of the call was confirmed for this band/mode combination
-* if not given: dxcc_confirmed_on_band_mode will be false as well as call_confirmed_band_mode
+
+- if given: api checks if the DXCC of the call was confirmed for this band/mode combination
+- if not given: dxcc_confirmed_on_band_mode will be false as well as call_confirmed_band_mode
 
 station_ids (array!):
-* if given: api checks QSOs within those station_profiles. If ommited: Every station_id of the key-owner will be checked.
-* if given but no given ID was granted: Every station_id of the key-owner will be checked.
-* if given but only a few IDs were granted: The granted IDs will be checked
-* if given as string and not array: Every station_id of the key-owner will be checked.
+
+- if given: api checks QSOs within those station_profiles. If ommited: Every station_id of the key-owner will be checked.
+- if given but no given ID was granted: Every station_id of the key-owner will be checked.
+- if given but only a few IDs were granted: The granted IDs will be checked
+- if given as string and not array: Every station_id of the key-owner will be checked.
 
 ### `api/version`
 
@@ -309,7 +314,7 @@ This Endpoint reports the current version of Wavelog running. A valid API-Key is
 
 Input format:
 
-```javascript
+```json
 {
     "key":"YOUR_API_KEY",
 }
@@ -317,7 +322,7 @@ Input format:
 
 Example response:
 
-```javascript
+```json
 {
   "status": "ok",
   "version": "2.0"
@@ -341,7 +346,7 @@ This Endpoint reports statistics about number of total QSOs, for the current yea
 
 Input format:
 
-```javascript
+```json
 {
     "key":"YOUR_API_KEY",
     "station_id":"YOUR_STATION_ID",
@@ -350,7 +355,7 @@ Input format:
 
 Example response:
 
-```javascript
+```json
 {
   "status": "successful",
   "message": "Export successful",
@@ -424,43 +429,44 @@ This Endpoint creates a new station_location within wavelog and tries to take ca
 "link_active_logbook" optional field can be included as of version 2.3.1 to link the newly created station location to the (API-)owner's active logbook, if one exists. Any non-falsey value will trigger automatic linking. The newly created station location will not be linked to a logbook automatically if this field is not included, or evaluates to a falsey value ("0","").
 
 Example Payload:
-```
+
+```json
 [
-	{
-		"station_profile_name": "DJ7NT at Home",
-		"hrdlog_username": "DJ7NT",
-		"station_gridsquare": "JO30",
-		"station_city": "Unkel",
-		"station_iota": "",
-		"station_sota": "",
-		"station_callsign": "DJ7NT",
-		"station_power": "100",
-		"station_dxcc": "230",
-		"dxccname": "FEDERAL REPUBLIC OF GERMANY",
-		"dxccprefix": "DL",
-		"station_cnty": "",
-		"station_cq": "14",
-		"station_itu": "28",
-		"station_active": "1",
-		"eqslqthnickname": "at Home",
-		"state": "RP",
-		"county": null,
-		"station_sig": "",
-		"station_sig_info": "",
-		"qrzrealtime": "-1",
-		"station_wwff": "",
-		"station_pota": "",
-		"oqrs": "1",
-		"oqrs_text": "",
-		"oqrs_email": "0",
-		"webadifrealtime": "0",
-		"clublogrealtime": "0",
-		"clublogignore": "0",
-		"hrdlogrealtime": "0",
-		"station_uuid": "12345678-1234-1234-1234-123456789012",
-		"eqsl_default_qslmsg": "Testing --&gt; Good signal & nice QSO",
-		"link_active_logbook": "1"
-	}
+ {
+  "station_profile_name": "DJ7NT at Home",
+  "hrdlog_username": "DJ7NT",
+  "station_gridsquare": "JO30",
+  "station_city": "Unkel",
+  "station_iota": "",
+  "station_sota": "",
+  "station_callsign": "DJ7NT",
+  "station_power": "100",
+  "station_dxcc": "230",
+  "dxccname": "FEDERAL REPUBLIC OF GERMANY",
+  "dxccprefix": "DL",
+  "station_cnty": "",
+  "station_cq": "14",
+  "station_itu": "28",
+  "station_active": "1",
+  "eqslqthnickname": "at Home",
+  "state": "RP",
+  "county": null,
+  "station_sig": "",
+  "station_sig_info": "",
+  "qrzrealtime": "-1",
+  "station_wwff": "",
+  "station_pota": "",
+  "oqrs": "1",
+  "oqrs_text": "",
+  "oqrs_email": "0",
+  "webadifrealtime": "0",
+  "clublogrealtime": "0",
+  "clublogignore": "0",
+  "hrdlogrealtime": "0",
+  "station_uuid": "12345678-1234-1234-1234-123456789012",
+  "eqsl_default_qslmsg": "Testing --&gt; Good signal & nice QSO",
+  "link_active_logbook": "1"
+ }
 ]
 ```
 
@@ -468,15 +474,17 @@ Example curl-call for creating a location:
 `curl "https://[your wavelog_instance]/api/create_station/[your_api_key]" -X POST -d @[File with payload]`
 
 Possible Results:
-* onSuccess with no dupes: 201 / {"status":"success","message":"1 locations imported."}
-* onSuccess with a dupe: 200 / {"status":"dupe","message":"0 locations imported."}
-* onError (Wrong key): 401 / {"status":"error","message":"Auth Error, invalid key"}
-* onError (Malformed JSON): 400 / {"status":"error","message":"Invalid JSON file"}
-* onError (other Errors): 500 / {"status":"error","message":"Hopefully helpful errormessage"}
+
+- onSuccess with no dupes: 201 / {"status":"success","message":"1 locations imported."}
+- onSuccess with a dupe: 200 / {"status":"dupe","message":"0 locations imported."}
+- onError (Wrong key): 401 / {"status":"error","message":"Auth Error, invalid key"}
+- onError (Malformed JSON): 400 / {"status":"error","message":"Invalid JSON file"}
+- onError (other Errors): 500 / {"status":"error","message":"Hopefully helpful errormessage"}
 
 Logic behind it:
-* It checks if there's already a station_location for the User with EXACT the same References, Call, etc.
-* It checks if there's already a station_location for the User with the same UUID (if provided in payload)
+
+- It checks if there's already a station_location for the User with EXACT the same References, Call, etc.
+- It checks if there's already a station_location for the User with the same UUID (if provided in payload)
 If one of both is true, this API won't create the location.
 
 ### `api/list_clubmembers`

@@ -1,4 +1,5 @@
 # DARC-DCL-Connector
+
 This feature is disabled by default. To enable it, edit your `config.php` and add the following line to it:
 
 `$config['enable_dcl_interface']=true;`
@@ -11,6 +12,7 @@ You're now able to request a Key from DARC by clicking on "Request DCL Key". You
 Autosync is also available. Please enable it in Master-Cron.
 
 ## Important
+
 - at the moment ONLY Uploading to DCL is supported.
 - Only QSOs which have not been already "marked as sent to DCL" will be uploaded. So take care at ADIF-Import and check "mark already uploaded to DCL" ONLY if you've done that before. (BTW / ProTip: The same way is valid fort all other 3rd-party-services)
 - DARC has announced to implement Download as well in future

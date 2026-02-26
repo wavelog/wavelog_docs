@@ -1,4 +1,4 @@
-# The post-contest workflow using the CBR importer.
+# The post-contest workflow using the CBR importer
 
 Let's imagine a contest logged in N1MM+. The exchange is Serial-No, DOK and 4-digit Gridsquare. After importing in wavelog, you'll see the following message:
 
@@ -18,4 +18,4 @@ Afterwards, we see the full exchange in the logbook view:
 
 ## Why can't we just import the CBR then?
 
-See the full breakdown of the reasons [in this article](https://github.com/wavelog/wavelog/wiki/CBR%E2%80%90Import-%E2%80%90-Why-we-need-to-import-ADIF-first,-then-CBR-later). 
+See the full breakdown of the reasons [in this article](../../user-guide/contesting/adif-before-cbr.md).

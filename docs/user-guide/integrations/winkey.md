@@ -14,5 +14,6 @@ Winkey support is very experimental due to it using WebSerial directly from the 
 | [RSTS] | Sent RST     |
 
 A few notes:
+
 * You must be in CW mode
 * You must be running via https. If you are running locally, the url must be localhost.

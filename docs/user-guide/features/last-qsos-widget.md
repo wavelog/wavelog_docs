@@ -20,7 +20,7 @@ Options:
 Possible `GET` Options currently implemented:
 
 !!! note
-    All Options are optional! 
+    All Options are optional!
 
 | option | value | default |
 |----|----|----|
@@ -36,7 +36,7 @@ Definition: Show the last 50 QSOs with dark theme and text size of 5
 
 Example for QRZ-Embedding:
 
-```
+```html
 <p style="text-align:center"><br />
 Last 25 Contacts (Tabular)<br />
 <iframe align="top" frameborder="0" height="525" id="last_25" name="last_25" scrolling="yes" src="https://[wavelog_url]/index.php/widgets/qsos/[slug]?qso_count=25&theme=dark&text_size=5" width="100%"></iframe></p>

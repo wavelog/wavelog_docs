@@ -8,11 +8,12 @@ These third-party tools require API keys which can be generated from _**Admin ->
 
 ## CAT Control
 
-Highly recommend checking the [Third Party Tools](https://github.com/wavelog/Wavelog/wiki/Third-Party-Tools) page on the wiki for a full list of radio interface applications.
+Highly recommend checking the [Third Party Tools](../../user-guide/integrations/third-party-tools.md) page on the wiki for a full list of radio interface applications.
 
 We recommend [WavelogGate](https://github.com/wavelog/WaveLogGate) created by Joerg (DJ7NT). This cross-platform tool works on Mac, Windows and Linux and provides a GUI tool to interface FlRig to Wavelog via the API.
 
 Due the fact that Wavelog is a Fork of Cloudlog you also can use some Cloudlog Tools like:  
+
 - [cloudlog-rigctl-interface](https://github.com/Manawyrm/cloudlog-rigctl-interface)
 - [CloudlogBashCat](https://github.com/g0wfv/CloudlogBashCat)
 

@@ -22,23 +22,22 @@ First, change one line in the configuration file `application/config/config.php`
 
 | URL | Config | Example URL |
 |-----|--------|----------|
-| default | `$config['index_page'] = 'index.php';` | [https://wavelog.example.com/index.php/logbook](#) |
-| pretty URLs | `$config['index_page'] = '';` | [https://wavelog.example.com/logbook](#) |
-
+| default | `$config['index_page'] = 'index.php';` | `https://wavelog.example.com/index.php/logbook` |
+| pretty URLs | `$config['index_page'] = '';` | `https://wavelog.example.com/logbook` |
 
 ### Apache
 
-If using Apache with mod_rewrite you have to rename the example file `htaccess.sample` to `.htaccess` in the root directory of your server. 
+If using Apache with mod_rewrite you have to rename the example file `htaccess.sample` to `.htaccess` in the root directory of your server.
 
 ### NGINX
 
 If using NGINX you have to insert or modify the root location with a `try_files` block like the example below.  This block goes right above the existing `location ~ \.php` block modified during initial installation.
 
-```
+```nginx
     location / {
             try_files $uri $uri/ /index.php$uri ;
     }
 
     # existing location block for php files.
-    location ~ \.php { 
+    location ~ \.php {
 ```

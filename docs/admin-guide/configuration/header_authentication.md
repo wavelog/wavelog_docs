@@ -25,30 +25,30 @@ OAuth2-Proxy can be configured to handle web traffic directly or handle `proxy_p
 
 An example OAuth2-Proxy docker-compose is below:
 
-```
+```yaml
   oauth2-proxy:
     container_name: oauth2-proxy
     image: quay.io/oauth2-proxy/oauth2-proxy:v<Check_Releases_For_Latest>
-    command: --config /oauth2-proxy.cfg 
+    command: --config /oauth2-proxy.cfg
     hostname: oauth2-proxy
     volumes:
       - "./oauth2-proxy.cfg:/oauth2-proxy.cfg"
     restart: unless-stopped
-    ports: 
+    ports:
       - "8080:4180"
 ```
 
 And an example `oauth2-proxy.cfg`:
 
-```
+```conf
 http_address = "0.0.0.0:4180"
 upstreams = http://wavelog:80
 
-cookie_secret =  
+cookie_secret =
 provider = "keycloak-oidc"
 email_domains = ["*"]
 client_id = "wavelog"
-client_secret =  
+client_secret =
 redirect_url = "http://wavelog.example.com/oauth2/callback"
 oidc_issuer_url= "http://sso.example.com/"
 code_challenge_method="S256"
@@ -78,4 +78,3 @@ OAuth2-Proxy prefixes headers with `X-Forwarded` and Wavelog adds `HTTP-` prefix
 ## Callsign from OIDC
 
 OAuth2-Proxy does not support custom OpenID Connect claims in headers as a stable feature. However standard claims like `groups` can be used.
-

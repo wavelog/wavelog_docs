@@ -35,8 +35,7 @@ Club Officers act as managers of the Clubstation. They have access similar to a 
 
 #### Overview
 
-<img width="1024"  alt="image" src="https://github.com/user-attachments/assets/cfcb29b0-c392-4f6d-9952-f9cb26722673" />
-
+<img width="1024"  alt="Club Permissions" src="https://github.com/user-attachments/assets/cfcb29b0-c392-4f6d-9952-f9cb26722673" />
 
 ---
 
@@ -98,6 +97,7 @@ Each user who switches into a Clubstation can have their own API keys and radios
 <img width="1259" alt="API Keys and Radios" src="https://github.com/user-attachments/assets/e7d1f39e-58a6-423f-85fe-d8c14fb7a4cb" />
 
 ---
+
 ## Special Cases
 
 ### Direct Clubstation Login
@@ -107,6 +107,7 @@ In some cases, for example public accessible stations it's cumbersome to create 
 ```php
 $config['club_direct'] = true;
 ```
-This option is default `false` to preserve the normal behaviour or clubstations. If it set to yes you can directly login into a clubstation account. This will trigger a modal dialog after login since the user callsign (clubstation are user accounts aswell) of the clubstation and the currently set operator callsign in the session data is equal. Since this is not wanted in clubstations you are forced to provide an operator callsign. 
+
+This option is default `false` to preserve the normal behaviour or clubstations. If it set to yes you can directly login into a clubstation account. This will trigger a modal dialog after login since the user callsign (clubstation are user accounts aswell) of the clubstation and the currently set operator callsign in the session data is equal. Since this is not wanted in clubstations you are forced to provide an operator callsign.
 
 <img width="520" height="391" alt="grafik" src="https://github.com/user-attachments/assets/220b5a24-8c49-41ed-ac5a-3e53895a8a49" />

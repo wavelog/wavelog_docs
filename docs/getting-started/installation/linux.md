@@ -5,9 +5,9 @@ This page will guide you through the steps required to install Wavelog onto a Li
 ## Prerequisites
 
 * Any modern Linux installation capable of supporting the other prerequisities.
-   * Recommended:
-     * Debian 11 or 12
-     * Ubuntu 22.04
+  * Recommended:
+    * Debian 11 or 12
+    * Ubuntu 22.04
 
 * Web server (e.g. Apache >= 2.4 or nginx)
 * [MySQL](https://www.mysql.com) or [MariaDB](https://mariadb.org)
@@ -26,6 +26,7 @@ This page will guide you through the steps required to install Wavelog onto a Li
   * Recommended minimum resolution of the browser viewport: >=HD
 
 ## Installation
+
 ### 1. Prepare LAMP Stack
 
 #### Debian
@@ -50,15 +51,16 @@ Use ```php -v``` to check the installed version. Minimum Version is PHP 7.4
     ### nginx configuration
     If you use nginx as web server you will need to make sure that the PHP handler does serve .php correctly and not only if the address ends on `.php`. See <a href="https://github.com/magicbug/cloudlog/issues/1613" target="_blank">this issue</a>. The basic change in the config is (remove the dollar sign):
 
-    ```
-    	# pass PHP scripts to FastCGI server
-    	#
-    -	location ~ \.php$ {
-    +	location ~ \.php {
+    ```conf
+     # pass PHP scripts to FastCGI server
+     #
+    - location ~ \.php$ {
+    + location ~ \.php {
     ```
     ⚠️ After you have changed this value restart the nginx web server before continuing the installation.
 
 #### Arch Linux / Manjaro Linux
+
 ```bash
 # to install the LNMP stack and dependencies, you can run this command
 sudo pacman -S git nginx php-fpm php-gd php-apcu php mariadb
@@ -69,11 +71,11 @@ systemctl restart mariadb
 ```
 
 edit /etc/php/php.ini and uncomment the following lines
-```
+
+```php
 extension=gd
 extension=mysqli
 ```
-
 
 ### 2. Download Wavelog using Git
 
@@ -84,9 +86,10 @@ The `git clone` command is used to fetch the latest build of Wavelog from the re
 ```bash
 git clone --depth 1 https://github.com/wavelog/wavelog.git [output_directory]
 ```
+
 Replace _output_directory_ with the full path to the directory where you'd like the application files to be created locally (don't include the square brackets). For example, if you configured Apache with a site that uses `/var/www/html` as its DocumentRoot directory then the command becomes  
 `git clone --depth 1 https://github.com/wavelog/wavelog.git /var/www/html`  
-Have a look at the [[Webserver Configurations]] for more information on site configuration.
+Have a look at the [Webserver Configurations](../../admin-guide/configuration/webserver.md) for more information on site configuration.
 
 ### 3. Set Directory Ownership and Permissions
 
@@ -108,6 +111,7 @@ The following folders need to be writable by PHP:
 **⚠️ Warning 3**: It is your responsibility to ensure you protect your system from intruders/attacks. These commands and permissions are just examples used to get Wavelog up and running and are not a guide on how to achieve a secure system. You should review these permissions after installation and make appropriate changes if you determine that finer-grained access control is needed.
 
 Set the basic permissions (work in most cases). Don't forget to adjust the directory:
+
 ```bash
 directory=/var/www/html
 
@@ -153,7 +157,6 @@ QUIT
 
 Configure the webserver of your choice according to the [webserver configuration](../../admin-guide/configuration/webserver.md) page.
 
-
 ### 6. Run the Wavelog Installer
 
 You need to run the installer. At this point, please open `<url-to-wavelog>/install` and follow the guide.
@@ -163,6 +166,7 @@ You need to run the installer. At this point, please open `<url-to-wavelog>/inst
 ## Post-Install Tasks
 
 ### Create Cron Jobs to Automate Wavelog Tasks
-You can use cron jobs to automate some of the regular Wavelog maintenance tasks. See [[Recommended Cron Jobs and Cronmanager]] for instructions.
+
+You can use cron jobs to automate some of the regular Wavelog maintenance tasks. See [Recommended Cron Jobs and Cronmanager](../../admin-guide/administration/cron-jobs.md) for instructions.
 
 After your first login you have to set up some things in Wavelog. Just follow the warnings on the dashboard.

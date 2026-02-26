@@ -1,6 +1,6 @@
 # Global Keyboard Shortcuts
 
-## `Ctrl + L` - Quick Lookup 
+## `Ctrl + L` - Quick Lookup
 
 The Quick Lookup dialog allows you to quickly find and view details for a callsign, gridsquare, DXCC entity or satellite. It can be opened from any page using the `Ctrl + L` keyboard shortcut.
 

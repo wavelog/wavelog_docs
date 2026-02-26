@@ -26,4 +26,4 @@ You can delete this file with:
 rm [the path shown from the find command]
 ```
 
-Then reload the debug information page and check if the warning persists. If you still have problems to get it running, create a new discussion [here](https://github.com/wavelog/wavelog/discussions).
+Then reload the debug information page and check if the warning persists. If you still have problems to get it running, create a new discussion in the [Wavelog GitHub discussions](https://github.com/wavelog/wavelog/discussions).

@@ -24,10 +24,13 @@ You can now easily install Wavelog on your Umbrel server from the [Umbrel App St
 * [cloudLogOffline](https://github.com/myzinsky/cloudLogOffline)
 
 # Tools
+
 ## Important Information (even if obvious!)
+
 If you're using multiple 3rd-party tools (e.g. Gridtracker in combination with WSJT-X and WavelogGate) make sure that **ONLY ONE** Tool emits the QSOs to Wavelog. Otherwise you may receive errors regarding dupes, because every tool tries to send the same QSO to Wavelog.
 
 Furthermore: QSOs from 3rd party tools won't be looked up in callbook automatically. This has serveral reasons. The important ones:
+
 1. The API can be used for bulk-uploads, e.g. like POLO is doing. Bulk-Lookup would block whole instance.
 2. If the information isn't given in a Computer to computer QSO (like FT8), why add them automatically?
 3. Workaround: Mark those QSOs at Logbook-Advanced, press actions, press "Update from Callbook" --> Done.

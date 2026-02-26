@@ -1,0 +1,15 @@
+# markdownlint-cli2 checks all docs for Markdown style issues.
+name: Markdown Lint
+on:
+  workflow_call:
+permissions:
+  contents: read
+jobs:
+  markdownlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Lint Markdown
+        uses: DavidAnson/markdownlint-cli2-action@v19
+        with:
+          globs: "docs/**/*.md"

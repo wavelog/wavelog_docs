@@ -14,13 +14,14 @@ There are many ways to Backup your whole system. We will describe _one_ solution
 #### Backupninja
 
 * Install [backupninja](https://0xacab.org/liberate/backupninja) on your system. The Debian way:
-```
+
+```bash
 sudo apt install backupninja
 ```
 
 * configure Backupninja. Simply add a file called `10-wavelog.mysql` located at `/etc/backup.d/` with the following content: Please replace the Strings within the brackets with the infos from your instance:
 
-```
+```conf
 databases   = [[all] or [name of your wavelog_db]]
 backupdir   = /var/backups/mysql
 hotcopy     = no
@@ -34,15 +35,16 @@ dbpassword = [password for the above user]
 
 * Have a look at `/etc/backupninja.conf` to set times and so on.
 
-From this moment on the Database will be dumped every night (or whatever you set at `/etc/backupninja.conf`) into `/var/backups/mysql`. That DB-Backup will be consistent in itself. The DB may NOT be consistent to Userfiles like Images, if a user uploads QSL-Images during the backup. 
+From this moment on the Database will be dumped every night (or whatever you set at `/etc/backupninja.conf`) into `/var/backups/mysql`. That DB-Backup will be consistent in itself. The DB may NOT be consistent to Userfiles like Images, if a user uploads QSL-Images during the backup.
 
 #### Duplicity
+
 Putting duplicity on top to backup the Files (including the QLS-Images/eQSL-Images/DB-Dump and more) to any Service you like (and duplicity supports) is a good idea. you can also use rsync for that
 
 todo: Short-Tutorial for duplicity and triggering backupninja from duplicity
 todo: Recovery
 
-##### Conclusio:
+##### Conclusio
 
 I am using this for about 2 years now, and never had a problem. But - tbh - it's no "Enterprise-Backup". If you are running a business (or sth. else which is very important) with Wavelog you should consider other Backup-methods like zfs-snapshots, LVM-Snapshots or Enterprise SANs. Due to the reason that this is not really Wavelog related, but more linux-admin-related we will not provide an "Admin-Tutorial" or sth. like that.
 And yes, we know that this strategy doesn't fit all environments like "el-cheapo-Hosters" with only FTP-Access. But as always in life: If you want enterprise-feeling you should use a root-Server like a VPS or sth. like that.

@@ -123,7 +123,6 @@ nav = [
       "admin-guide/administration/station-setup.md",
       "admin-guide/administration/clubstations.md",
       "admin-guide/administration/external-clubstations.md",
-      "admin-guide/administration/recommended-setup-clubs.md",
       "admin-guide/administration/backup.md",
       "admin-guide/administration/backup-strategies.md",
       "admin-guide/administration/cron-jobs.md",

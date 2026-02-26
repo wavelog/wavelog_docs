@@ -6,7 +6,7 @@ Since early 2024 we offered a tutorial here on how to migrate an existing Cloudl
 
 We therefore strongly recommend against using this tutorial and instead suggest performing a fresh Wavelog installation using one of the guides in this Wiki, then manually importing your QSOs, settings and station setups. Yes, it requires a bit more effort — but you'll end up with a clean, performant Wavelog setup from day one.
 
-If you still want to try the old migration path, the deprecated tutorial is available here: [How to migrate Cloudlog to Wavelog (deprecated)](https://github.com/wavelog/wavelog/wiki/How-to-migrate-Cloudlog-to-Wavelog-(DEPRECATED))
+If you still want to try the old migration path, the deprecated tutorial is available below. Please be aware that we won't be able to provide support for any issues arising from this migration path.
 
 Vy 73 de Wavelog Dev Team
 
@@ -30,14 +30,13 @@ Keep in mind, that you'll lose Features which were implemented after CloudLog `2
 
 Don't forget the "Post-Migration" Steps at the end of this page.
 
-### Preparation
+## Preparation
 
-In order to successfully migrate your existing Cloudlog Installation to Wavelog, you first have to set the correct migration version. 
+In order to successfully migrate your existing Cloudlog Installation to Wavelog, you first have to set the correct migration version.
 
 Edit the file `application/config/migration.php` with your favorite editor. In this example, we use `nano` in the command line.
 
-
-```
+```bash
 cd /var/www/html
 nano -l application/config/migration.php
 ```
@@ -46,15 +45,15 @@ We assume that Cloudlog was installed in the folder `/var/www/html`. If your ins
 
 Now, while editing the file `migration.php`, make sure the value of the migration version on `Line 25` is `170`.
 
-
-```
+```php
+<?php
 $config['migration_version'] = 170;
 ```
 
 !!! danger
     If your migration version is any number BELOW 170, first update your Cloudlog Installation to the latest version.
 
-Save the file with `Ctrl + X`, `Y`, and `Enter` 
+Save the file with `Ctrl + X`, `Y`, and `Enter`
 
 After changing the migration version to `170`, go back to your browser and reload Cloudlog. You can verify the correct version number in the Admin menu at `ADMIN -> Debug Information`. You can ignore messages like `Not possible, sorry.`!
 
@@ -64,6 +63,7 @@ You have successfully downgraded your Cloudlog Installation to Version 2.6.3.
 
 **Now shut down your webserver to avoid issues while changing the configurations**  
 For Example:
+
 ```bash
 systemctl stop apache2
 ```
@@ -73,33 +73,31 @@ systemctl stop apache2
 If Cloudlog was installed with `git clone`, the migration process is quite easy. As we set important data in `.gitignore`, your specific userdata is not affected by this.
 You first have to change the remote URL where `git` is pulling the data from.
 
-
-```
+```bash
 git remote set-url origin https://www.github.com/wavelog/wavelog
 ```
 
 Fetch the new git information for the newly set URL.
 
-```
+```bash
 git fetch origin
 ```
 
 If you now just would do a `git pull`, you would get a warning that you have uncommitted changes. To pull Wavelog now from GitHub, you can just "stash" the changes which differ from your existing Cloudlog installation.
 
-```
+```bash
 git stash
 ```
 
 Now we can pull Wavelog from GitHub.
 
-```
+```bash
 git pull --rebase
 ```
 
-**Optional:** If you don't want to "stash" that stuff (needs a few bytes of storage), you can also do a hard reset, which just ignores any changes and gets the files for Wavelog. But please be aware that this is a very hard way. 
- 
+**Optional:** If you don't want to "stash" that stuff (needs a few bytes of storage), you can also do a hard reset, which just ignores any changes and gets the files for Wavelog. But please be aware that this is a very hard way.
 
-```
+```bash
 git reset --hard origin/master
 ```
 
@@ -111,25 +109,27 @@ If your Cloudlog instance is installed by a bare ZIP File or you are using a hos
 
 1. Download the latest release of Wavelog as a ZIP File and unzip it.
 
-	[https://github.com/wavelog/wavelog/releases](https://github.com/wavelog/wavelog/releases)
+ [https://github.com/wavelog/wavelog/releases](https://github.com/wavelog/wavelog/releases)
 
-2. Now download the following files and folders from your existing installation:
-	- File: `application/config/config.php`
-	- File: `application/config/database.php`
-	- File: `application/config/cloudlog.php`
-	- Folder: `uploads/`
-	- Folder: `images/eqsl_card_images/`
-	- Folder: `assets/qslcard/`
-	- **IF EXISTS:**
-		- File: `assets/js/sections/custom.js`
-3. Now copy these files and folders into the newly downloaded Wavelog data. You can just replace them **except cloudlog.php**. This file you need to rename to **wavelog.php**.  
+1. Now download the following files and folders from your existing installation:
+
+- File: `application/config/config.php`
+- File: `application/config/database.php`
+- File: `application/config/cloudlog.php`
+- Folder: `uploads/`
+- Folder: `images/eqsl_card_images/`
+- Folder: `assets/qslcard/`
+- **IF EXISTS:**
+- File: `assets/js/sections/custom.js`
+
+1. Now copy these files and folders into the newly downloaded Wavelog data. You can just replace them **except cloudlog.php**. This file you need to rename to **wavelog.php**.  
 Another way would be to just log in with (S)FTP and upload the Wavelog folder and accept "Overwrite?"-Messages. But don't forget to rename the cloudlog.php file to wavelog.php.
-4. Once this is done, you can replace the complete **Cloudlog folder** with the prepared **Wavelog folder**.
-5. Now reload the webpage. You should now see Wavelog running.
+2. Once this is done, you can replace the complete **Cloudlog folder** with the prepared **Wavelog folder**.
+3. Now reload the webpage. You should now see Wavelog running.
 
 ### Post-Migration Steps
 
-After successfully migrating your Cloudlog Installation to Wavelog, you should check some things. 
+After successfully migrating your Cloudlog Installation to Wavelog, you should check some things.
 
 You may want to start your webserver again, after you shut it down earlier
 
@@ -145,13 +145,13 @@ systemctl restart apache2
     Windows: `Ctrl + F5`  
     Mac: `Cmd + Shift + R`
 
-* Check your current configuration `application/config/config.php` and compare it against the sample config `application/config/config.sample.php`. You should make sure that your current configuration contains the same stuff as the sample config. For example you want to set `$config['app_name']` to "Wavelog".
+- Check your current configuration `application/config/config.php` and compare it against the sample config `application/config/config.sample.php`. You should make sure that your current configuration contains the same stuff as the sample config. For example you want to set `$config['app_name']` to "Wavelog".
 
-* Make sure all folders and files have the correct ownership for the web server:
+- Make sure all folders and files have the correct ownership for the web server:
 
    For Example:
 
-```
+```bash
 sudo chown -R www-data:www-data /var/www/html
 ```
 

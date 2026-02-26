@@ -10,4 +10,3 @@ You can use Update Country Files to update the DXCC lookup information that is u
 The `DONE` in the first line is important!
 * Check missing DXCC / Countries values
 * Re-Check ALL - This checks your whole log and makes sure it's correct.
-

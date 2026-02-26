@@ -1,14 +1,15 @@
 # HTTPS Support
 
-Wavelog does not directly come with https built in (Why you can read [here](https://github.com/wavelog/wavelog/discussions/2131)). But we offer some ways how you can Wavelog with https enabled. 
+Wavelog does not directly come with https built in (Why you can read [in this GitHub discussion](https://github.com/wavelog/wavelog/discussions/2131)). But we offer some ways how you can Wavelog with https enabled.
 
 ---
 
 Content:  
-- [Docker Installations](https://github.com/wavelog/wavelog/wiki/HTTPS-Support#docker-installations)  
-- [File Based Installs / git](https://github.com/wavelog/wavelog/wiki/HTTPS-Support#normal-file-based-installs-or-git-based-installations)  
 
-For a solution with public available SSL certificates google for "certbot" or use the [Nginx Proxy Manager](https://github.com/NginxProxyManager/nginx-proxy-manager). For latter you will need some advanced config parameters - a hint for that can be found here: https://github.com/wavelog/wavelog/discussions/1231#discussioncomment-13698583
+- [Docker Installations](../../getting-started/installation/docker.md)  
+- [File Based Installs / git](../../getting-started/installation/linux.md)  
+
+For a solution with public available SSL certificates google for "certbot" or use the [Nginx Proxy Manager](https://github.com/NginxProxyManager/nginx-proxy-manager). For latter you will need some advanced config parameters - a hint for that can be found here: <https://github.com/wavelog/wavelog/discussions/1231#discussioncomment-13698583>
 
 ---
 
@@ -19,6 +20,7 @@ For a solution with public available SSL certificates google for "certbot" or us
 
 Docker installations are easy. Simply add an reverse proxy to your docker compose file. But let us prepare some other files:
 Create a local folder (same path where the docker-compose.yml is)
+
 ```bash
 mkdir -p nginx
 
@@ -29,12 +31,16 @@ mkdir -p nginx
 # |- nginx
 ###
 ```
+
 And create the nginx configuration in there
-```
+
+```bash
 nano nginx/nginx.conf
 ```
+
 ## nginx/nginx.conf
-```
+
+```nginx
 events {
     worker_connections 1024;
 }
@@ -118,18 +124,22 @@ http {
     }
 }
 ```
+
 If you don't have any ssl certificate you can create a self-signed one like with these commands. Adjust your path if you have any. You have to copy the to nginx/ssl folder.
-```
+
+```bash
 openssl genrsa -out nginx/ssl/wavelog.key 4096
 openssl req -new -key nginx/ssl/wavelog.key -out nginx/ssl/wavelog.csr
 openssl x509 -req -days 3650 -in nginx/ssl/wavelog.csr -signkey nginx/ssl/wavelog.key -out nginx/ssl/wavelog.crt
 rm nginx/ssl/wavelog.csr
-``` 
+```
+
 !!! warning
     These certificates are only selfsigned certificates. For valid certs you have to use LetsEncrypt. Check out the internet.
 
 ## docker-compose.yml
-```
+
+```yaml
 services:
   wavelog-db:
     image: mariadb:11.3
@@ -192,7 +202,7 @@ networks:
 
 When using a Docker installation and Nginx Reverse Proxy you must also configure the base-url in config.php to be the reverse proxy URL address using the https protocol. If using the standard docker-compose.yml from above this can be found in `/var/lib/docker/volumes/wavelog_wavelog-config/_data`.
 
-```
+```php
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
@@ -232,7 +242,7 @@ In the case of a normal installation you also have a webserver running. So you a
 
 ## Apache2
 
-```
+```apache
 # Optional: Redirect all HTTP to HTTPS
 <VirtualHost *:80>
     ServerName wavelog.example.com                             # <-- EDIT
@@ -240,29 +250,29 @@ In the case of a normal installation you also have a webserver running. So you a
 </VirtualHost>
 
 <VirtualHost *:443>
-	ServerAdmin webmaster@localhost
+ ServerAdmin webmaster@localhost
         ServerName wavelog.example.com                         # <-- EDIT
 
-	DocumentRoot /var/www/html                             # <-- EDIT
+ DocumentRoot /var/www/html                             # <-- EDIT
 
         ServerSignature Off
 
-	ErrorLog ${APACHE_LOG_DIR}/error.log
-	CustomLog ${APACHE_LOG_DIR}/access.log combined
+ ErrorLog ${APACHE_LOG_DIR}/error.log
+ CustomLog ${APACHE_LOG_DIR}/access.log combined
 
-	SSLEngine on
+ SSLEngine on
 
         # These are only self-signed certificates. They will produce an error in your browser, even the traffic is still encrypted
         # For valid SSL Certificates you have to use LetsEncrypt or commercial certificates. Check the internet for tutorials
-	SSLCertificateFile      /etc/ssl/certs/ssl-cert-snakeoil.pem
-	SSLCertificateKeyFile   /etc/ssl/private/ssl-cert-snakeoil.key
+ SSLCertificateFile      /etc/ssl/certs/ssl-cert-snakeoil.pem
+ SSLCertificateKeyFile   /etc/ssl/private/ssl-cert-snakeoil.key
 
-	<FilesMatch "\.(?:cgi|shtml|phtml|php)$">
-		SSLOptions +StdEnvVars
-	</FilesMatch>
-	<Directory /usr/lib/cgi-bin>
-		SSLOptions +StdEnvVars
-	</Directory>
+ <FilesMatch "\.(?:cgi|shtml|phtml|php)$">
+  SSLOptions +StdEnvVars
+ </FilesMatch>
+ <Directory /usr/lib/cgi-bin>
+  SSLOptions +StdEnvVars
+ </Directory>
 
         <Directory /var/www/html>
                 Options Indexes FollowSymLinks MultiViews
@@ -275,14 +285,14 @@ In the case of a normal installation you also have a webserver running. So you a
 
 Make sure the correct modules are enabled and restart apache2
 
-```shell
+```bash
 a2enmod ssl rewrite
 systemctl restart apache2
 ```
 
 ## Nginx
 
-```
+```nginx
 # HTTP -> HTTPS Redirect
 server {
     listen 80 default_server;                           
@@ -401,6 +411,4 @@ server {
         fastcgi_param HTTPS on;
     }
 }
-``` 
-
-
+```

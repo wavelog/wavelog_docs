@@ -8,7 +8,7 @@ Look for the line with `$config['log_threshold']`.
 
 You can enable error logging by setting a threshold over zero. The threshold determines what gets logged. Threshold options are:
 
-```
+```text
 0 = Disables logging, Error logging TURNED OFF
 1 = Error Messages (including PHP errors)
 2 = Debug Messages
@@ -18,7 +18,7 @@ You can enable error logging by setting a threshold over zero. The threshold det
 
 You can also pass an array with threshold levels to show individual error types
 
-```
+```text
 array(2) = Debug Messages, without Error Messages
 ```
 

@@ -4,7 +4,7 @@ The LoTW certificate has to be exported from tqsl application at least version 2
 
 ## Why does the LoTW confirmation badge in logbook overview and logbook advanced show outdated data?
 
-Information regarding the last upload to LoTW for the DX station is based on so called "lotw-user-activity.csv" file. This file is provided by LoTW and contains the last upload date for every call. 
+Information regarding the last upload to LoTW for the DX station is based on so called "lotw-user-activity.csv" file. This file is provided by LoTW and contains the last upload date for every call.
 
 Apparently this file is only updated once a week around 1000z on Sundays. The Wavelog cron job for this is set to import the file once a week on Sundays This results in a time difference of up to a week. Last LoTW upload date and time for a specific callsign can be looked up on [Logbook Find Call](https://lotw.arrl.org/lotwuser/act?awg_id=&ac_acct=) or using the link "Last Upload" on the QSO details modal. This requires a valid and logged in LoTW account.
 
@@ -19,12 +19,13 @@ Check the credentials for your LoTW account. Uploads of logs are just using the 
 ## Why do LoTW uploads fail even if my LoTW certificate is valid?
 
 LoTW certificates have two date period fields:
-- The first is the validity of the certificate itself. This marks the time during which the certificate can be used to sign logs. 
-- The second date information is called QSO start and end time and is independent of the certificate validity. 
 
-You can actively restrict the time for QSOs for which the certificate can be used (e.g. only specific times of a DXpedidition or end times for deleted DXCCs). 
+- The first is the validity of the certificate itself. This marks the time during which the certificate can be used to sign logs.
+- The second date information is called QSO start and end time and is independent of the certificate validity.
 
-Example: LoTW certificate with validity from `Jan 1st 2025` to `Dec 31th 2030` but the certificate QSO time is between `Feb 23th 2025` and `Aug 28th 2026`. This certificate cannot be used to sign QSOs before `Feb 23th 2025` or after `Aug 28th 2026` although the certificate itself is valid until 2030. 
+You can actively restrict the time for QSOs for which the certificate can be used (e.g. only specific times of a DXpedidition or end times for deleted DXCCs).
+
+Example: LoTW certificate with validity from `Jan 1st 2025` to `Dec 31th 2030` but the certificate QSO time is between `Feb 23th 2025` and `Aug 28th 2026`. This certificate cannot be used to sign QSOs before `Feb 23th 2025` or after `Aug 28th 2026` although the certificate itself is valid until 2030.
 
 For common usage you may want to leave the field for QSO end time empty during LoTW certificate request. See screenshot:
 

@@ -6,7 +6,7 @@ Passwords are hashed using standard PHP mechanism. So there is an easy way to ge
 
 Here is a quick and dirty example:
 
-```
+```php
 <?php
 defined('PASSWORD_BCRYPT') OR define('PASSWORD_BCRYPT', 1);
 defined('PASSWORD_DEFAULT') OR define('PASSWORD_DEFAULT', PASSWORD_BCRYPT);
@@ -20,13 +20,13 @@ if ($argc == 2) {
 
 This way you can execute the PHP script locally and provide your password as commandline argument. E.g. (you stored the code as password.php):
 
-```
-$ php password.php thisismynewpassword
+```bash
+php password.php thisismynewpassword
 ```
 
 Use the output string as value for the column user_password for the desired user account in the MySQL table (wavelog.)users.
 
-### Quick Solution 
+## Quick Solution
 
 And here is the hint for the even lazier OM:
 
