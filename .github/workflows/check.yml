@@ -6,4 +6,4 @@ on:
   workflow_dispatch:
 jobs:
   lychee:
-    uses: ./.github/workflows/components/lychee-check.yml@master
+    uses: ./.github/workflows/lychee-check.yml
