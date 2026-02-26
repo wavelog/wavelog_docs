@@ -1,0 +1,17 @@
+# Builds the documentation to catch broken nav references, missing files,
+# and configuration errors before merging.
+name: Build Check
+on:
+  workflow_call:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+      - run: pip install -r requirements.txt
+      - run: zensical build --strict

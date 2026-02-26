@@ -7,3 +7,5 @@ on:
 jobs:
   lychee:
     uses: ./.github/workflows/lychee-check.yml
+  build:
+    uses: ./.github/workflows/build-check.yml
