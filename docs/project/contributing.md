@@ -47,6 +47,7 @@ A maintainer will review your PR. Please be patient — all contributors work on
 - When adding code, keep in mind: it has to be safe, scaleable and must run on minimal-ressources as well as in huge environments
 - External Tools are highly appreciated, but please discuss/ask for new API-Endpoints before adding them for your tool. This saves effort on both sides
 - When using AI/CodePilot which supports you during development, please be able to understand what you and your AI contributes. Be prepared for questions.
+- This is a project created by humans. We want to keep it that way. Commits made by my AI are not allowed. If possible, make sure your commits are signed/verified.
 - Pure AI Pull-Requests will be rejected.
 
 See the [Style Guide](../developer/style-guide.md) for frontend conventions.
