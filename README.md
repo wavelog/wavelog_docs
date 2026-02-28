@@ -27,10 +27,10 @@ zensical serve
 ```
 
 >[!IMPORTANT]
-> Make sure you run all tests before pushing your changes. You can run the tests with the following command. Nodejs is required to run the tests.
+> Make sure you run all tests before pushing your changes. You can run the tests with the following command. Nodejs is required to run the tests. `lychee` can be installed over your local package manager (apt, brew, pacman, whatever).
 
 ```bash
-lychee --cache -v --max-cache-age 2h docs/
+lychee --cache --max-cache-age 2h docs/
 zensical build --strict
 npx markdownlint-cli2 --fix "docs/**/*.md"
 ```
