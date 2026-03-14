@@ -1,6 +1,6 @@
 # Global Options
 
-Global Options are settings that affect Wavelog whether you're logged in or not and over time will have more options as time goes on.
+Global Options are settings that affect Wavelog whether you're logged in or not and over time will have more options as time goes on. This documentation is currently work in progress.
 
 ## Appearance
 
