@@ -143,6 +143,7 @@ nav = [
     "developer/development-notes.md",
     "developer/style-guide.md",
     "developer/translations.md",
+    "developer/mqtt.md",
   ]},
   {"Troubleshooting" = [
     "troubleshooting/adif-cant-import.md",
