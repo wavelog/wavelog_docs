@@ -49,7 +49,10 @@ chown -R www-data:www-data /var/www/html
     - You should see the Version Dialog which shows you the Release Notes of the latest release.
     - Check the Version in `ADMIN > DEBUG`. You should now see the correct version here aswell.
 
-### Updating via `zip`-File
+### Updating via `zip`-File (e.g. FTP webspaces)
+
+!!! warning
+    If you do not follow the instructions and just overwrite your existing files this can lead to two files, if we renamed a file. So happened a lot of times with the release 2.3.1. If you facing an issue with two versions of the migration number 170, simply delete the file `170_tag_2_6_3.php` or just follow the instructions below to make a proper upgrade. We recommend using git as installation method as it causes way less headache. 
 
 When using Wavelog on a Hosted Webspace you may have no access to a command line. Then you need to update your Wavelog-Installation with a downloaded `zip`-File. Follow this Step by Step to do a proper update.
 
