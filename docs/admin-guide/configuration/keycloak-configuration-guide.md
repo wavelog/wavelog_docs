@@ -89,7 +89,7 @@ services:
 
 ### `oauth2-proxy.cfg`
 
-For detailed explainations refer to <a href="https://oauth2-proxy.github.io/oauth2-proxy/docs/configuration/overview/" target="_blank">OAuth2 Proxy's official documentation</a>.
+For detailed explainations refer to <a href="https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview" target="_blank">OAuth2 Proxy's official documentation</a>.
 
 ```conf
 http_address = "0.0.0.0:4180"
@@ -123,7 +123,7 @@ openssl rand -base64 32 | tr -- '+/' '-_'
 
 ## Step 4: Configure Your Webserver
 
-OAuth2 Proxy listens on port `4180` and acts as the upstream for your webserver. The webserver terminates TLS and proxies everything to OAuth2 Proxy — no path-based filtering needed here, as OAuth2 Proxy handles that internally via `skip_auth_routes`. 
+OAuth2 Proxy listens on port `4180` and acts as the upstream for your webserver. The webserver terminates TLS and proxies everything to OAuth2 Proxy — no path-based filtering needed here, as OAuth2 Proxy handles that internally via `skip_auth_routes`.
 
 !!! tip "Examples"
     All these configurations are examples. You have to adjust all of them to your needs. There is no Copy & Paste solution for this.
