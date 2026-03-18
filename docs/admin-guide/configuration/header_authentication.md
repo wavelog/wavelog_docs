@@ -1,5 +1,8 @@
 # Header Authentication - OAuth2-Proxy & Keycloak
 
+!!! example "Not implemented yet"
+    this feature is not implemented yet! Check out https://github.com/wavelog/wavelog/pull/2978 for status updates
+
 This guide explains how Wavelog can be configured to use [Keycloak](https://www.keycloak.org/) for authentication.
 
 When using [OAuth2-Proxy](https://github.com/oauth2-proxy/oauth2-proxy) with Keycloak, **only Username and Email** is available by default.
