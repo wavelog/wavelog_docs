@@ -113,7 +113,10 @@ nav = [
       "admin-guide/configuration/multi-domain.md",
       "admin-guide/configuration/centralized-userdata.md",
       "admin-guide/configuration/maptile-server.md",
-      "admin-guide/configuration/header_authentication.md",
+      {"Third-Party Authentication" = [
+        "admin-guide/configuration/thirdparty-authentication.md",
+        {"Keycloak" = "admin-guide/configuration/keycloak-configuration-guide.md"}
+      ]},
     ]},
     {"Administration" = [
       "admin-guide/administration/user-accounts.md",
