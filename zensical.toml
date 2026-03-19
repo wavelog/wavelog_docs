@@ -115,7 +115,9 @@ nav = [
       "admin-guide/configuration/maptile-server.md",
       {"Third-Party Authentication" = [
         "admin-guide/configuration/thirdparty-authentication.md",
-        {"Keycloak" = "admin-guide/configuration/keycloak-configuration-guide.md"}
+        {"Keycloak" = "admin-guide/configuration/keycloak-configuration-guide.md"},
+        {"Authentik" = "admin-guide/configuration/authentik-configuration-guide.md"},
+        {"Apache2 OIDC Module" = "admin-guide/configuration/apache2-mod-auth-openidc.md"},
       ]},
     ]},
     {"Administration" = [

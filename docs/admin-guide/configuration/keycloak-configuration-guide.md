@@ -1,6 +1,9 @@
 # Keycloak
 
-This guide walks through configuring [Keycloak](https://www.keycloak.org/) as the identity provider for Wavelog. Two setups are covered:
+!!! tip "Already running Apache2? Use mod_auth_openidc instead"
+    If Apache2 is your webserver, `mod_auth_openidc` is the recommended approach — it handles the OIDC flow natively without a separate OAuth2 Proxy container. See [Apache2 with mod_auth_openidc](apache2-mod-auth-openidc.md).
+
+This guide walks through configuring <a href="https://www.keycloak.org/" target="_blank">Keycloak</a> as the identity provider for Wavelog. Two setups are covered:
 
 - **OAuth2 Proxy** (Steps 3–5): a dedicated proxy container handles the OIDC flow and forwards the JWT to Wavelog
 - **Apache2 with mod_auth_openidc** (alternative in Step 4): Apache handles OIDC directly without a separate proxy
@@ -226,9 +229,6 @@ server {
 ```
 
 ---
-
-!!! tip "Alternative: Apache2 without OAuth2 Proxy"
-    If you are already running Apache2, you can use `mod_auth_openidc` to handle the OIDC flow directly — no OAuth2 Proxy needed. See [Apache2 with mod_auth_openidc](apache2-mod-auth-openidc.md).
 
 ---
 

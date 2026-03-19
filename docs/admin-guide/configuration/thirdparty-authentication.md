@@ -55,6 +55,9 @@ cp application/config/sso.sample.php application/config/sso.php
 - [Authentik](authentik-configuration-guide.md)
 - more to come...
 
+!!! tip "Already running Apache2?"
+    If Apache2 is your webserver, use [`mod_auth_openidc`](apache2-mod-auth-openidc.md) instead of OAuth2 Proxy. It handles the full OIDC flow natively — no additional container or proxy needed. This is the recommended approach for Apache2 setups.
+
 ---
 
 ## Configuration Reference
