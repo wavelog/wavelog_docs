@@ -12,8 +12,22 @@ sequenceDiagram
     participant W as Wavelog
 
     B->>P: Request
-    P->>I: OIDC Authentication
-    I-->>P: JWT Access Token
+    P->>W: Request Forwarded
+    W-->>B: Redirect to Login Page
+    critical Authentication
+        B->>P: Visit SSO Authentication Endpoint
+        P-->>B: Redirect to IdP
+        activate B
+        B->>I: OIDC Client Request
+        deactivate B
+    
+        I-->>I: Auth with Credentials (PW, MFA, etc)
+
+        I-->>B: Redirect to OAuth2 Proxy Endpoint
+        activate B
+        B->>P: Pass JWT to OAuth2 Proxy Endpoint
+        deactivate B
+    end
     P->>W: Request + X-Forwarded-Access-Token header
     W->>W: Verify JWT, extract claims
     W-->>B: Redirect to Dashboard

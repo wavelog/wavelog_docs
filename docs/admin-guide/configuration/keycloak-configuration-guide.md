@@ -13,7 +13,7 @@ This guide walks through configuring <a href="https://www.keycloak.org/" target=
 ```text
 Browser  →  Webserver (nginx / Apache2)  →  OAuth2 Proxy  →  Wavelog
                                                   ↕
-                                            Keycloak (OIDC)
+                                            Keycloak (JWKS)
 ```
 
 OAuth2 Proxy handles the OIDC flow with Keycloak and forwards the JWT access token to Wavelog as an HTTP header. Wavelog verifies the token using Keycloak's JWKS endpoint.
@@ -74,7 +74,7 @@ Wavelog requires a callsign in the JWT. Keycloak does not include custom user at
 OAuth2 Proxy acts as the authenticating reverse proxy. It handles the OIDC login flow with Keycloak and forwards the JWT access token to Wavelog.
 
 !!! important
-    OAuth2 Proxy must protect **only** `/index.php/header_auth/login`. All other Wavelog paths must be passed through without requiring authentication. Configure `skip_auth_routes` accordingly (see config example below).
+    OAuth2 Proxy must protect **only** `/index.php/header_auth/login`. All other Wavelog paths must be passed through without requiring authentication. 
 
 ### Docker Compose
 
@@ -96,7 +96,6 @@ For detailed explainations refer to <a href="https://oauth2-proxy.github.io/oaut
 
 ```conf
 http_address = "0.0.0.0:4180"
-upstreams = ["static://200"]
 
 cookie_secret = "your-random-cookie-secret" # see below how to generate
 
@@ -110,7 +109,13 @@ code_challenge_method="S256"
 pass_user_headers=true
 set_xauthrequest = true
 pass_access_token = true
+
+# See https://oauth2-proxy.github.io/oauth2-proxy/configuration/session_storage
 cookie_refresh = "4m"
+cookie_expire = "30m"
+
+skip_provider_button = true
+whitelist_domains = "your-keycloak-domain"
 ```
 
 Generate a cookie secret with:
@@ -126,7 +131,7 @@ openssl rand -base64 32 | tr -- '+/' '-_'
 
 ## Step 4: Configure Your Webserver
 
-OAuth2 Proxy listens on port `4180` and acts as the upstream for your webserver. The webserver terminates TLS and proxies everything to OAuth2 Proxy — no path-based filtering needed here, as OAuth2 Proxy handles that internally via `skip_auth_routes`.
+OAuth2 Proxy listens on port `4180` and acts as the upstream for your webserver. The webserver terminates TLS and proxies everything.
 
 !!! tip "Examples"
     All these configurations are examples. You have to adjust all of them to your needs. There is no Copy & Paste solution for this.
@@ -134,6 +139,16 @@ OAuth2 Proxy listens on port `4180` and acts as the upstream for your webserver.
 ### nginx
 
 ```text
+
+
+upstream app {
+    server wavelog:80;
+}
+
+upstream oauth2_proxy {
+    server oauth2-proxy:4180;
+}
+
 server {
     listen 80;
     server_name wavelog.example.org;
@@ -185,7 +200,7 @@ server {
         auth_request_set $access_token $upstream_http_x_auth_request_access_token;
         proxy_set_header X-Forwarded-Access-Token $access_token;
 
-        proxy_pass http://upstream:8084;
+        proxy_pass http://app:8084;
         proxy_set_header Host              $host;
         proxy_set_header X-Real-IP         $remote_addr;
         proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
@@ -199,7 +214,7 @@ server {
 
     # All other routes — no auth_request, Wavelog manages sessions itself
     location / {
-        proxy_pass http://upstream:8084;
+        proxy_pass http://app:8084;
         proxy_set_header Host              $host;
         proxy_set_header X-Real-IP         $remote_addr;
         proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
@@ -223,8 +238,8 @@ server {
     </Location>
 
     # All other requests go directly to Wavelog, which manages sessions itself (no auth_request)
-    ProxyPass        / http://host.docker.internal:8084/
-    ProxyPassReverse / http://host.docker.internal:8084/
+    ProxyPass        / http://wavelog-app:8084/
+    ProxyPassReverse / http://wavelog-app:8084/
 </VirtualHost>
 ```
 

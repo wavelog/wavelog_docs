@@ -10,7 +10,7 @@ This guide walks through configuring <a href="https://goauthentik.io/" target="_
 ```text
 Browser  →  Webserver (nginx / Apache2)  →  OAuth2 Proxy  →  Wavelog
                                                   ↕
-                                          Authentik (OIDC)
+                                          Authentik (JWKS)
 ```
 
 OAuth2 Proxy handles the OIDC flow with Authentik and forwards the JWT access token to Wavelog as an HTTP header. Wavelog verifies the token using Authentik's JWKS endpoint.
@@ -142,7 +142,6 @@ For detailed explanations refer to <a href="https://oauth2-proxy.github.io/oauth
 
 ```conf
 http_address = "0.0.0.0:4180"
-upstreams = ["static://200"]
 
 cookie_secret = "your-random-cookie-secret" # see below how to generate
 
@@ -158,7 +157,13 @@ code_challenge_method = "S256"
 pass_user_headers = true
 set_xauthrequest = true
 pass_access_token = true
+
+# See https://oauth2-proxy.github.io/oauth2-proxy/configuration/session_storage
 cookie_refresh = "4m"
+cookie_expire = "30m"
+
+skip_provider_button = true
+whitelist_domains = "authentik.example.org"
 ```
 
 Generate a cookie secret with:
