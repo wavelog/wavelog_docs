@@ -74,7 +74,7 @@ Wavelog requires a callsign in the JWT. Keycloak does not include custom user at
 OAuth2 Proxy acts as the authenticating reverse proxy. It handles the OIDC login flow with Keycloak and forwards the JWT access token to Wavelog.
 
 !!! important
-    OAuth2 Proxy must protect **only** `/index.php/header_auth/login`. All other Wavelog paths must be passed through without requiring authentication. 
+    OAuth2 Proxy must protect **only** `/index.php/header_auth/login`. All other Wavelog paths must be passed through without requiring authentication.
 
 ### Docker Compose
 
