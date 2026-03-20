@@ -195,12 +195,11 @@ $config['auth_header_clubstation_direct'] = [
 
 ### Dynamic Group Mapping
 
-Each key is a group prefix and the value is if user membership should be updated on each login. If false user is only assigned on user creation. 
+Each key is a group prefix and the value is if user membership should be updated on each login. If false user is only assigned on user creation.
 If true users are added to clubstations on login. (Recommended value is true)
 
 !!! warning
     Dynamic Group Mapping does not remove users from Clubstations when they are removed from the IdP group
-
 
 This uses `$config['auth_header_clubstation_dynamic']`:
 
@@ -210,7 +209,6 @@ $config['auth_header_clubstation_dynamic'] = [
     'wl_' => true,
 ];
 ```
-
 
 ## User Identification
 
