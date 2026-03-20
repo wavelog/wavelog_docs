@@ -163,6 +163,55 @@ You can map any additional column from the `users` table. Fields not listed use 
 
 ---
 
+## Group Mapping
+
+Users can be mapped to existing clubstations as club members. This requires `$config['special_callsign'] = true;`.
+
+$config['auth_header_clubstation_claim'] should be set to the JWT claim that  provides a multi-valued group attribute (RFC7643 4.1.2). The common claim  is "groups" per RFC9068 2.2.3.1.
+There are two methods to map JWT / OIDC groups to clubstations:
+
+1. Directly, each group matches to one clubstation ID
+2. Dynamically, a prefix for all OIDC groups that have clubstation ID
+
+### Direct Group Mapping
+
+This uses `$config['auth_header_clubstation_direct']`, the keys are:
+
+- group: The name of the group defined in the IdP
+- update_on_login: If user membership should be updated on each login. If false user is only assigned on user creation. (Recommended value is true)
+
+```php
+$config['auth_header_clubstation_direct'] = [
+   9 => [
+       'group' => 'wl_society_station_group',
+       'update_on_login' => true
+   ],
+   15 => [
+       'group' => 'wl_special_event_station',
+       'update_on_login' => true
+   ],
+];
+```
+
+### Dynamic Group Mapping
+
+Each key is a group prefix and the value is if user membership should be updated on each login. If false user is only assigned on user creation. 
+If true users are added to clubstations on login. (Recommended value is true)
+
+!!! warning
+    Dynamic Group Mapping does not remove users from Clubstations when they are removed from the IdP group
+
+
+This uses `$config['auth_header_clubstation_dynamic']`:
+
+```php
+$config['auth_header_clubstation_dynamic'] = [
+    'wavelog_' => true,
+    'wl_' => true,
+];
+```
+
+
 ## User Identification
 
 Wavelog identifies SSO users by a composite key consisting of the JWT `iss` (issuer URL) and `sub` (subject) claims, stored as JSON in the `external_account` database column:
