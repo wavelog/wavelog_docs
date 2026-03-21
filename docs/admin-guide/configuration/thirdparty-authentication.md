@@ -167,7 +167,7 @@ You can map any additional column from the `users` table. Fields not listed use 
 
 Users can be mapped to existing clubstations as club members. This requires `$config['special_callsign'] = true;`.
 
-$config['auth_header_clubstation_claim'] should be set to the JWT claim that  provides a multi-valued group attribute (RFC7643 4.1.2). The common claim  is "groups" per RFC9068 2.2.3.1.
+$config['auth_header_clubstation_claim'] should be set to the JWT claim that provides a multi-valued group attribute (RFC7643 4.1.2). The common claim is "groups" per RFC9068 2.2.3.1.
 There are two methods to map JWT / OIDC groups to clubstations:
 
 1. Directly, each group matches to one clubstation ID
@@ -199,7 +199,7 @@ $config['auth_header_clubstation_direct'] = [
 ### Dynamic Group Mapping
 
 Each key is a JWT issuer. If set to empty string it applies to all JWT issuers. Below
-each issuer the keys are group prefixes and the value is if user membership should be updated on each login. 
+each issuer the keys are group prefixes and the value is if user membership should be updated on each login.
 If false user is only assigned on user creation. If true users are added to clubstations on login. (Recommended value is true)
 
 !!! warning
