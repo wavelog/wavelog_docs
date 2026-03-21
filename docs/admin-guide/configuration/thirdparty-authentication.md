@@ -1,6 +1,6 @@
 # Third-Party Authentication
 
-Wavelog supports authentication via third-party identity providers (IdPs) using the OpenID Connect (OIDC) protocol. Instead of managing usernames and passwords itself, Wavelog delegates authentication to a trusted reverse proxy that sits in front of it. The reverse proxy verifies the user's identity with the IdP and forwards a signed JWT access token to Wavelog via an HTTP header.
+Wavelog supports authentication via third-party identity providers (IdPs) using the OpenID Connect (OIDC) protocol. Instead of managing usernames and passwords itself, Wavelog delegates authentication to a trusted reverse proxy that sits in front of it. The reverse proxy verifies the user's identity with the IdP and forwards a signed JWT access token to Wavelog via an HTTP header. Wavelog requires that each username is unique across all IdPs that provide authentication. Wavelog will error if usernames class across JWT issuers.
 
 !!! info "Wavelog Support Scope"
     While Wavelog supports OIDC and gives some guidance about SSO and its configuration with this documentation, we don't support you directly with your Identity Provider. So if you don't know how to set up Keycloak, adding 2-factor in Authentik or how the internet works, we unfortunately can't help you with that. You will find great forums and support communities for these topics. Thanks for your understanding.
