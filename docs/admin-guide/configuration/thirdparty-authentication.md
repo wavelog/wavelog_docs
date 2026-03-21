@@ -175,28 +175,32 @@ There are two methods to map JWT / OIDC groups to clubstations:
 
 ### Direct Group Mapping
 
-This uses `$config['auth_header_clubstation_direct']`, the keys are:
+This uses `$config['auth_header_clubstation_direct']`, each key is a JWT issuer. If set to empty string it applies to all JWT issuers. Below
+each issuer the keys are:
 
 - group: The name of the group defined in the IdP
 - update_on_login: If user membership should be updated on each login. If false user is only assigned on user creation. (Recommended value is true)
 
 ```php
 $config['auth_header_clubstation_direct'] = [
-   9 => [
-       'group' => 'wl_society_station_group',
-       'update_on_login' => true
-   ],
-   15 => [
-       'group' => 'wl_special_event_station',
-       'update_on_login' => true
-   ],
+    "https://idp.example.com/realms/acme" => [
+        9 => [
+            'group' => 'wl_society_station_group',
+            'update_on_login' => true
+        ],
+        15 => [
+            'group' => 'wl_special_event_station',
+            'update_on_login' => true
+        ],
+    ]
 ];
 ```
 
 ### Dynamic Group Mapping
 
-Each key is a group prefix and the value is if user membership should be updated on each login. If false user is only assigned on user creation.
-If true users are added to clubstations on login. (Recommended value is true)
+Each key is a JWT issuer. If set to empty string it applies to all JWT issuers. Below
+each issuer the keys are group prefixes and the value is if user membership should be updated on each login. 
+If false user is only assigned on user creation. If true users are added to clubstations on login. (Recommended value is true)
 
 !!! warning
     Dynamic Group Mapping does not remove users from Clubstations when they are removed from the IdP group
@@ -205,8 +209,9 @@ This uses `$config['auth_header_clubstation_dynamic']`:
 
 ```php
 $config['auth_header_clubstation_dynamic'] = [
-    'wavelog_' => true,
-    'wl_' => true,
+    "https://idp.example.com/realms/acme" => [
+        'wavelog_' => true
+    ]
 ];
 ```
 
