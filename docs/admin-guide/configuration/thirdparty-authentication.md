@@ -1,6 +1,6 @@
 # Third-Party Authentication
 
-Wavelog supports authentication via third-party identity providers (IdPs) using the OpenID Connect (OIDC) protocol. Instead of managing usernames and passwords itself, Wavelog delegates authentication to a trusted reverse proxy that sits in front of it. The reverse proxy verifies the user's identity with the IdP and forwards a signed JWT access token to Wavelog via an HTTP header.
+Wavelog supports authentication via third-party identity providers (IdPs) using the OpenID Connect (OIDC) protocol. Instead of managing usernames and passwords itself, Wavelog delegates authentication to a trusted reverse proxy that sits in front of it. The reverse proxy verifies the user's identity with the IdP and forwards a signed JWT access token to Wavelog via an HTTP header. Wavelog requires that each username is unique across all local and SSO accounts.
 
 !!! info "Wavelog Support Scope"
     While Wavelog supports OIDC and gives some guidance about SSO and its configuration with this documentation, we don't support you directly with your Identity Provider. So if you don't know how to set up Keycloak, adding 2-factor in Authentik or how the internet works, we unfortunately can't help you with that. You will find great forums and support communities for these topics. Thanks for your understanding.
@@ -162,6 +162,30 @@ $config['auth_headers_claim_config'] = [
 You can map any additional column from the `users` table. Fields not listed use their default values on account creation and are not updated on subsequent logins.
 
 ---
+
+## Clubstation Group Mapping
+
+Users can be mapped to existing clubstations as club members when a user is created or duing login. This requires `$config['special_callsign'] = true;`.
+
+$config['auth_header_clubstation_claim'] should be set to the JWT claim that provides a multi-valued group attribute (RFC7643 4.1.2). The common claim is "groups" per RFC9068 2.2.3.1.
+
+For `$config['auth_header_clubstation_direct']`, each key is a clubstation id. Its nested keys are:
+
+- group: The name of the group defined in the IdP
+- update_on_login: If user membership should be updated on each login. If false user is only assigned on user creation. (Recommended value is true)
+
+```php
+$config['auth_header_clubstation_direct'] = [
+   9 => [
+       'group' => 'wl_society_station_group',
+       'update_on_login' => true
+   ],
+   15 => [
+       'group' => 'wl_special_event_station',
+       'update_on_login' => true
+   ],
+];
+```
 
 ## User Identification
 
