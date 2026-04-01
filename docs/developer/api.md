@@ -91,6 +91,7 @@ Full-Parameter-Set (for WL-Versions >2.4)
 ```
 
 whereas:
+
 - `output_format` is default ADIF (if omitted or explicitly set)
 - if it's set to JSON, it emits the ADIF-Fields passed via the `fields` array as json.
 - if it's set to ADIF, passed `fields` are ignored
