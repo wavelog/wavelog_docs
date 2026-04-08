@@ -165,7 +165,7 @@ You can map any additional column from the `users` table. Fields not listed use 
 
 ## Clubstation Group Mapping
 
-Users can be mapped to existing clubstations as club members when a user is created or duing login. This requires `$config['special_callsign'] = true;`.
+Users can be mapped to existing clubstations as club members when a user is created or during login. This requires `$config['special_callsign'] = true;`.
 
 $config['auth_header_clubstation_claim'] should be set to the JWT claim that provides a multi-valued group attribute (RFC7643 4.1.2). The common claim is "groups" per RFC9068 2.2.3.1.
 
