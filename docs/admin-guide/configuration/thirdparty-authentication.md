@@ -163,6 +163,35 @@ You can map any additional column from the `users` table. Fields not listed use 
 
 ---
 
+## Clubstation Group Mapping
+
+Users can be mapped to existing clubstations as club members when a user is created or during login. This requires `$config['special_callsign'] = true;`.
+
+$config['auth_header_clubstation_claim'] should be set to the JWT claim that provides a multi-valued group attribute (RFC7643 4.1.2). The common claim is "groups" per RFC9068 2.2.3.1.
+
+For `$config['auth_header_clubstation_direct']`, each key is a clubstation id. Its nested keys are:
+
+- group: The name of the group defined in the IdP
+- update_on_login: If user membership should be updated on each login. If false user is only assigned on user creation. (Recommended value is true)
+
+```php
+$config['auth_header_clubstation_direct'] = [
+   9 => [
+       'group' => 'wl_society_station_group',
+       'update_on_login' => true
+   ],
+   15 => [
+       'group' => 'wl_special_event_station',
+       'update_on_login' => true
+   ],
+];
+```
+
+For Keycloak, the `groups` claim is not provided by default, a custom client scope must be created. Instructions are available in the [Keycloak server administration guide](https://www.keycloak.org/docs/latest/server_admin/index.html#_client_scopes).
+The scope needs an [assertion mapping](https://www.keycloak.org/docs/latest/server_admin/index.html#_protocol-mappers), then under mappers add a new mapper from `Group Membership`.
+
+Authentik provides the groups claim by default.
+
 ## User Identification
 
 Wavelog identifies SSO users by a composite key consisting of the JWT `iss` (issuer URL) and `sub` (subject) claims, stored as JSON in the `external_account` database column:
