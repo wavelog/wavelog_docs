@@ -6,13 +6,13 @@ This page will guide you through the steps required to install Wavelog onto a Li
 
 * Any modern Linux installation capable of supporting the other prerequisities.
   * Recommended:
-    * Debian 11 or 12
-    * Ubuntu 22.04
+    * Debian 12 or 13
+    * Ubuntu 24.04
 
 * Web server (e.g. Apache >= 2.4 or nginx)
 * [MySQL](https://www.mysql.com) or [MariaDB](https://mariadb.org)
   * InnoDB has to be available and set as default engine
-* [PHP](https://www.php.net) <= 8.2 plus modules (8.3 seems to work without issues):
+* [PHP](https://www.php.net) <= 8.3+ plus modules (8.5 seems to work without issues):
   * php-curl
   * php-mbstring
   * php-mysql
@@ -45,7 +45,7 @@ If you use Apache2 as Webserver you maybe need aswell
 sudo apt install libapache2-mod-php
 ```
 
-Use ```php -v``` to check the installed version. Minimum Version is PHP 7.4
+Use ```php -v``` to check the installed version. Minimum recommended version is PHP 8.3
 
 !!! note
     ### nginx configuration
