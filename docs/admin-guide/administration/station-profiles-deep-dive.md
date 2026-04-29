@@ -12,7 +12,7 @@
 One could say: But that information is already in an ADIF, so it’s nice to have a template, but not a must-have.
 
 !!! info Nice explaination by DB4SCW
-    DB4SCW wrote a great description about Station Locations in Wavelog. We highly recommend that: https://www.db4scw.de/station-locations-in-wavelog-and-pota/
+    DB4SCW wrote a great description about Station Locations in Wavelog. We highly recommend that: <https://www.db4scw.de/station-locations-in-wavelog-and-pota/>
 
 ### What about these (necessary) things
 
