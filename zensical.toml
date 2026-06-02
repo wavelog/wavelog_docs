@@ -156,6 +156,13 @@ nav = [
     "troubleshooting/migration-locked.md",
     "troubleshooting/theme-issues.md",
   ]},
+  {"Wavelog Worker" = [
+    "wavelog-worker/index.md",
+    "wavelog-worker/installation.md",
+    "wavelog-worker/wavelog-integration.md",
+    "wavelog-worker/configuration.md",
+    "wavelog-worker/clustering.md",
+  ]},
 ]
 
 [project.theme]
