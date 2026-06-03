@@ -18,4 +18,4 @@ Afterwards, we see the full exchange in the logbook view:
 
 ## Why can't we just import the CBR then?
 
-See the full breakdown of the reasons [in this article](../../user-guide/contesting/adif-before-cbr.md).
+See the full breakdown of the reasons [in this article](adif-before-cbr.md).
