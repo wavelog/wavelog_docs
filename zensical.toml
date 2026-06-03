@@ -73,8 +73,13 @@ nav = [
       "user-guide/awards/wap.md",
     ]},
     {"Contesting" = [
-      "user-guide/contesting/post-contest-cbr.md",
-      "user-guide/contesting/adif-before-cbr.md",
+      {"Overview" = "user-guide/contesting/index.md"},
+      {"Management" = "user-guide/contesting/management.md"},
+      {"Logging" = "user-guide/contesting/logging.md"},
+      {"Additional Tipps about CBR/ADIF" = [
+        "user-guide/contesting/additional/post-contest-cbr.md",
+        "user-guide/contesting/additional/adif-before-cbr.md",
+      ]},
     ]},
     {"Features" = [
       "user-guide/features/analytics.md",
