@@ -9,8 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+      - name: Restore Lychee Cache
+        uses: actions/cache@v4
+        with:
+          path: .lycheecache
+          key: lychee-cache-${{ github.ref_name }}
+          restore-keys: lychee-cache-
       - name: Dead Link Check
         id: lychee
         uses: lycheeverse/lychee-action@v2
         with:
           fail: true
+          args: --cache --max-cache-age 2d docs/
