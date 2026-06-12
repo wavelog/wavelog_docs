@@ -41,3 +41,4 @@ Furthermore: QSOs from 3rd party tools won't be looked up in callbook automatica
 * [wsjtx_log](https://github.com/DL3EL/WSJTX_Log) synch qrg & mode and automatically upload new entries from WSJT X
 * [adif2cloud](https://github.com/imlonghao/adif2cloud) monitor ADIF file changes and distribute new QSO to multi destinations
 * [DX Cluster Web](https://github.com/oliverbross/dx-cluster-web) Extended DX Cluster gui that works with Wavelog
+* [WaveRover](https://github.com/int2001/waverover) Handy tool, to split your existing ADIF into Station-Locations, which will automagically be created from source (if they're not existing)
