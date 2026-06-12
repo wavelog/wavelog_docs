@@ -7,32 +7,29 @@ For contributing to the documentation, please refer to https://docs.wavelog.org/
 
 ## Dependencies
 
-Python with venv Module
+[Docker](https://docs.docker.com/engine/install/) and `make` — that's it. All tools (Zensical, markdownlint, lychee) run in containers.
 
 ## Local Development
 
+All common tasks are wrapped in a Makefile:
+
 ```bash
 cd wavelog_docs
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+
+# run the dev server on localhost:8000
+make serve
 
 # build the sources
-zensical build
-
-# or directly run the dev server
-zensical serve
-
-## Runs on locahost:8000 
+make build
 ```
 
 >[!IMPORTANT]
-> Make sure you run all tests before pushing your changes. You can run the tests with the following command. Nodejs is required to run the tests. `lychee` can be installed over your local package manager (apt, brew, pacman, whatever).
+> Make sure you run all checks before pushing your changes (same checks as CI):
+>
+> ```bash
+> make test
+> ```
 
-```bash
-lychee --cache --max-cache-age 2h docs/
-zensical build --strict
-npx markdownlint-cli2 --fix "docs/**/*.md"
-```
+Run `make help` to see all available targets.
 
 Cheers

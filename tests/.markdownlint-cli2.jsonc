@@ -1,0 +1,4 @@
+// Adds colored output; rule configuration still comes from .markdownlint.jsonc.
+{
+  "outputFormatters": [["markdownlint-cli2-formatter-pretty"]]
+}
