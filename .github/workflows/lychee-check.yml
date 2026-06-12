@@ -20,4 +20,4 @@ jobs:
         uses: lycheeverse/lychee-action@v2
         with:
           fail: true
-          args: --cache --max-cache-age 2d docs/
+          args: --cache --max-retries 5 --retry-wait-time 5 --max-cache-age 30d docs/
