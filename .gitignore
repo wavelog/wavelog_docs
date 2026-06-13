@@ -1,3 +1,5 @@
 .venv
 site
 .lycheecache
+.DS_Store
+__pycache__
