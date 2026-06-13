@@ -48,3 +48,7 @@ You can modify your station or add more by clicking on your name in the top menu
 ### Locations vs Logbooks
 
 Station Locations define operating locations such as your home QTH, a friend's QTH, or portable operation sites. Only one station may be active at a time for logging QSOs. A logbook can be assigned to multiple locations.
+
+## Read More
+
+For more information read the [user guide](../../user-guide/logbook/dashboard.md)
