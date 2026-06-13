@@ -15,10 +15,12 @@ $config['base_url'] = call_user_func(function () {
     // Whitelist of allowed domains for this Wavelog instance
     // Ignore the port here. It's just about domain/subdomain
     // IPv4 works, IPv6 don't due to the regex
+    // In docker environments it's important to add 'localhost' aswell
     $url_allowed   = [
         'wavelog.example.org',
         'log.domain2.xyz',
-        '192.168.0.123'
+        '192.168.0.123',
+        'localhost'
     ];
 
     // Define the redirect URL for invalid/non-whitelisted hosts
