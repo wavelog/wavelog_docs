@@ -154,3 +154,16 @@ For more detail, raise the `log_threshold` value in `config.php` (see above). Ap
 ### Cronjobs
 
 The cron manager is enabled by default in the Docker image. Jobs can be managed in the web UI under **Admin → Cron Manager** — no manual crontab setup required.
+
+## Optional Configuration (since v2.5.1)
+
+In case you see the need to change some of the carefully chosen default settings, you can do so by adding environment variables to the `wavelog-main` service in your `docker-compose.yml`. Available options are:
+
+| Variable Name | Description | Default Value |
+| --- | --- | --- |
+| `PHP_MEMORY_LIMIT` | Override the default PHP memory limit. | `256M` |
+| `PHP_MAX_EXECUTION_TIME` | Override the default PHP max execution time. | `600` |
+| `PHP_UPLOAD_MAX_FILESIZE` | Override the default PHP upload max filesize. | `64M` |
+| `PHP_POST_MAX_SIZE` | Override the default PHP post max size. | `64M` |
+| `PUID` | Set the file owner for files inside the container. | `999` |
+| `PGID` | Set the group owner for files inside the container. If only one of `PUID` or `PGID` is set, the other will default to `www-data` which is `33`. | `33` |
