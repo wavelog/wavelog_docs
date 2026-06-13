@@ -70,17 +70,24 @@ See the [Style Guide](../developer/style-guide.md) for frontend conventions.
 
 ## Local Documentation Preview
 
+For local development of the Wavelog Docs you need:
+
+- docker
+- make
+
 The documentation uses [Zensical](https://zensical.org). To preview changes locally:
 
 ```bash
-# Install dependencies in a venv (Python 3.x required)
-pip install -r requirements.txt
-
-# Start the live-reloading development server
-zensical serve
+make serve
 ```
 
-The documentation will be available at `http://127.0.0.1:8000`.
+Before you create a Pull Request for documentation run the tests locally!
+
+```bash
+make test
+```
+
+The documentation will be available at `http://localhost:8000`.
 
 ## Translations
 
