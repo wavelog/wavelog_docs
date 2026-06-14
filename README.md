@@ -32,4 +32,13 @@ make build
 
 Run `make help` to see all available targets.
 
+### Windows
+
+If you're on Windows and don't have `make` available, you can run the powershell script directly:
+
+```powershell
+cd wavelog_docs
+powershell -ExecutionPolicy Bypass -File .\tests\run.ps1
+```
+
 Cheers
