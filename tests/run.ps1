@@ -203,11 +203,11 @@ try {
   }
   Write-Raw "  ${DIM}$(Get-Rule)${RESET}`n"
 
-  $total = [int]$START.Elapsed.TotalSeconds
+  $elapsed = [int]$START.Elapsed.TotalSeconds
   if ($FAILED -eq 0) {
-    Write-Raw "  ${BOLD}${GREEN}$($G.ok) All $TOTAL checks passed${RESET} ${DIM}(${total}s)${RESET} - ready to push!`n`n"
+    Write-Raw "  ${BOLD}${GREEN}$($G.ok) All $TOTAL checks passed${RESET} ${DIM}(${elapsed}s)${RESET} - ready to push!`n`n"
   } else {
-    Write-Raw "  ${BOLD}${RED}$($G.no) $FAILED of $TOTAL checks failed${RESET} ${DIM}(${total}s)${RESET}`n`n"
+    Write-Raw "  ${BOLD}${RED}$($G.no) $FAILED of $TOTAL checks failed${RESET} ${DIM}(${elapsed}s)${RESET}`n`n"
     exit 1
   }
 } finally {
