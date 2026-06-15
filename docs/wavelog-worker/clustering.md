@@ -59,10 +59,6 @@ Alternatively, use a managed Redis service (Upstash, Redis Cloud, etc.).
 Add `redis_url` to each Worker's `config.yaml`:
 
 ```yaml
-ws_port: 9000
-internal_port: 9001
-worker_secret: "your-secret-here-minimum-32-characters"
-
 redis_url: "redis://localhost:6379/2"
 ```
 
