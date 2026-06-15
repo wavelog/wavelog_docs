@@ -10,6 +10,11 @@ The Worker is configured through a single YAML file, passed via the `--config` f
 ws_port: 9000        # WebSocket port — browsers connect here
 internal_port: 9001  # Internal API port — Wavelog PHP connects here
 
+# Optional: bind addresses. Empty/omitted = listen on all interfaces (0.0.0.0 + ::).
+# Tip: restrict the internal API (carries worker_secret) to localhost.
+# ws_bind: "0.0.0.0"
+# internal_bind: "127.0.0.1"
+
 # Shared secret — must match the value in Wavelog's worker.php config.
 # Minimum 32 characters. Generate with: openssl rand -hex 32
 worker_secret: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
