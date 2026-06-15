@@ -16,6 +16,11 @@ Create `config.yaml` based on `config.sample.yaml` in a directory of your choice
 ws_port: 9000        # browsers connect here
 internal_port: 9001  # Wavelog PHP calls this port
 
+# Optional: bind addresses. Empty/omitted = listen on all interfaces (0.0.0.0 + ::).
+# Tip: restrict the internal API (carries worker_secret) to localhost.
+# ws_bind: "0.0.0.0"
+# internal_bind: "127.0.0.1"
+
 worker_secret: "your-secret-here-minimum-32-characters"
 ```
 

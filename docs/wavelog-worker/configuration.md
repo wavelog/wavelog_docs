@@ -55,6 +55,32 @@ This port should **not** be exposed to the internet. Restrict it to your interna
 
 ---
 
+### `ws_bind`
+
+| | |
+|---|---|
+| **Type** | string |
+| **Default** | `0.0.0.0` |
+| **Required** | No |
+
+The IP Addres which is the websocket service is bind to. This is the IP which needs to be reachable from the outside world by
+using a reverse proxy.
+
+---
+
+### `internal_bind`
+
+| | |
+|---|---|
+| **Type** | string |
+| **Default** | `127.0.0.1` |
+| **Required** | No |
+
+The IP address for the internal communication with Wavelog. This port needs ONLY be reachable by Wavelog itself. If the Wavelog Worker
+is running on the same host, this IP should be set to 127.0.0.1. Otherwise make sure you set up a proper firewall.
+
+---
+
 ### `worker_secret`
 
 | | |
