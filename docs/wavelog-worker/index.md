@@ -65,7 +65,7 @@ sequenceDiagram
 
 - Docker (or the ability to run a compiled binary)
 - Network access between Wavelog's web server and the Worker's internal port (9001) - NEVER expose the Worker's internal port to the public internet!
-- Network access from browsers to the Worker's WebSocket port (9000)
+- Network access from browsers to the Worker's WebSocket port (9000) via Reverse Proxy for proper SSL/WSS
 - A shared secret of at least 32 characters
 
 ## Next Steps
