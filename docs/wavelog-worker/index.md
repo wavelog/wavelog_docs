@@ -20,7 +20,7 @@ graph LR
     A[Operator A<br/>Browser] -->|WebSocket| W[Wavelog Worker<br/>:9000]
     B[Operator B<br/>Browser] -->|WebSocket| W
     C[Operator C<br/>Browser] -->|WebSocket| W
-    P[Wavelog PHP] -->|Publish event| W
+    P[Wavelog PHP] -->|Publish event on Port 9001| W
     W -->|Push to all| A
     W -->|Push to all| B
     W -->|Push to all| C
