@@ -15,6 +15,9 @@ The Wavelog Worker was originally developed for the new contesting mode in Wavel
 
 The Worker listens for broadcast events from Wavelog's PHP backend (e.g. when a QSO is logged) and pushes those updates to all connected browsers in real time via WebSockets. This allows multiple operators to see live updates without refreshing the page or waiting for AJAX polling intervals.
 
+!!! warning "One Wavelog Instance - One Worker (or a set of Workers)"
+    It's not possible to connect multiple Wavelog Instances to one Wavelog Worker because both parties need a shared set of secrets. Connecting more than one Wavelog Instance to a Worker would cause topic conflicts. So don't do that.
+
 ```mermaid
 graph LR
     A[Operator A<br/>Browser] -->|WebSocket| W[Wavelog Worker<br/>:9000]
