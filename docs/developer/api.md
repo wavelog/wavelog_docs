@@ -223,14 +223,42 @@ Returns information about stations (logbook locations) belonging to the user who
     "station_gridsquare": "JO30OO",
     "station_callsign": "DJ7NT",
     "station_active": "1"
+    "station_uuid": "cc997421-653a-7799-8c9c-23faffe7723",
+    "station_city": "Bonn",
+    "station_iota": "",
+    "station_sota": "",
+    "station_wwff": "",
+    "station_pota": "",
+    "station_sig": "",
+    "station_sig_info": "",
+    "station_dxcc": "230",
+    "station_cnty": "",
+    "station_cq": "14",
+    "station_itu": "28",
+    "station_state": "",
+    "station_country": "FEDERAL REPUBLIC OF GERMANY"
   },
   {
     "station_id": "2",
     "station_profile_name": "JO30oo / DO7INT",
     "station_gridsquare": "JO30OO",
     "station_callsign": "DO7INT",
-    "station_active": null
-  }
+    "station_active": null,
+    "station_uuid": "aa9974bb-cc3a-77f0-8c6c-62fcea5a7799",
+    "station_city": "Bonn",
+    "station_iota": "",
+    "station_sota": "",
+    "station_wwff": "",
+    "station_pota": "",
+    "station_sig": "",
+    "station_sig_info": "",
+    "station_dxcc": "230",
+    "station_cnty": "",
+    "station_cq": "14",
+    "station_itu": "28",
+    "station_state": "",
+    "station_country": "FEDERAL REPUBLIC OF GERMANY"
+  },
 ]
 ```
 
@@ -491,7 +519,8 @@ Example Payload:
   "hrdlogrealtime": "0",
   "station_uuid": "12345678-1234-1234-1234-123456789012",
   "eqsl_default_qslmsg": "Testing --&gt; Good signal & nice QSO",
-  "link_active_logbook": "1"
+  "link_active_logbook": "1",
+  "qrzapikey": "valid-payed-qrz-key" // From Wavelog >V2.5.1 on
  }
 ]
 ```
