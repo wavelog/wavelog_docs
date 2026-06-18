@@ -29,15 +29,18 @@ The Ratelimiter checks the API-Key. Reading-Example for `'lookup' => ['requests'
 - Exceeded? 429 returned
 - This is per key/session. So if you have two Users doing 150 or up to 200 requests per 60seconds in sum, it is fine.
 
+Hint for Developers: Use the APIs in a "best effort way". e.g.: Update Frequencies when TRX is settled instead of every second. Use delta-offloading when using get_contacts_adif, etc.
+
 Edit your `config.php` and add the following entries to it / adjust it to your needs:
 
 ```php
 $config['api_rate_limits'] = [
-     'private_lookup' => ['requests' => 60, 'window' => 60],
-     'lookup'         => ['requests' => 100, 'window' => 60],
-     'qso'            => ['requests' => 20, 'window' => 60],
-     'radio'          => ['requests' => 60, 'window' => 60],
-     'statistics'     => ['requests' => 30, 'window' => 60],
-     'default'        => ['requests' => 50, 'window' => 60],
+     'private_lookup'     => ['requests' => 60, 'window' => 60],
+     'get_contacts_adif'  => ['requests' => 30, 'window' => 120],
+     'lookup'             => ['requests' => 100, 'window' => 60],
+     'qso'                => ['requests' => 20, 'window' => 60],
+     'radio'              => ['requests' => 60, 'window' => 60],
+     'statistics'         => ['requests' => 30, 'window' => 60],
+     'default'            => ['requests' => 50, 'window' => 60],
  ];
 ```
