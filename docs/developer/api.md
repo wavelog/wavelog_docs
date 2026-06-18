@@ -25,7 +25,8 @@ The API URL is composed of the base url of the application (example: `https://lo
 
 Keep in mind, that your instanceowner may have set a [rate-limit](https://docs.wavelog.org/getting-started/hints-and-tips/#api-ratelimiting-requires-wavelog-v223-at-least) for some Endpoints. Use the APIs in a polite manner. Means: Do not call them without need for it.
 e.g.:
-- `/api/radio` - post to it, when frequency/mode changes. Not blind eery second
+
+- `/api/radio` - post to it, when frequency/mode changes. Not blind every second
 - `/api/get_contacts_adif` - it's designed for delta-loads. no need to crawl the whole log every minute.
 
 ## Available APIs
