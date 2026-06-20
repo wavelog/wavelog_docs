@@ -68,7 +68,7 @@ Minimal-Payload to be sent to the API endpoint:
 ```json
 {
     "key": "YOUR_API_KEY",   // API-Key, read-only at least
-    "station_id": "Station Profile ID Number",  // Station ID for the station that we want to pull QSOs from
+    "station_id": "Station Profile ID Number",  // Station ID for the station that we want to pull QSOs from. WL > V2.5.1 supports also an Array here
     "fetchfromid": 0  // Internal database primary inside Wavelog of the last pulled QSO. Start at 0 to get all QSOs.
 }
 ```
@@ -89,7 +89,7 @@ Full-Parameter-Set (for WL-Versions >2.4)
 ```json
   {
     "key": "your-api-key", // API-Key, read-only at least
-    "station_id": 1, // Station ID for the station that we want to pull QSOs from
+    "station_id": 1, // Station ID for the station that we want to pull QSOs from. WL > V2.5.1 supports also an Array here
     "fetchfromid": 0, // Internal database primary inside Wavelog of the last pulled QSO. Start at 0 to get all QSOs.
     "qsl_filter": ["lotw"], // Optional QSL-Filter (Received). Possible values are: "lotw","eqsl","qsl","clublog"
     "output_format": "json", // Optional Format-Filter. Default ADIF within JSON. if set to JSON the fields (see next) are coming as JSON
@@ -97,6 +97,8 @@ Full-Parameter-Set (for WL-Versions >2.4)
     "band": "SAT", // Optional Band-Filter
   }
 ```
+
+Note: From Wavelog-Versions >2.5.1 you can also pass an array to station_id (e.g. `...,"station_id":[1,2]...`) to fetch from multiple station_ids instead of crawling every single one.
 
 whereas:
 
