@@ -59,6 +59,7 @@ nav = [
       "user-guide/qsl/oqrs.md",
       "user-guide/qsl/label-printing.md",
       "user-guide/qsl/print-requested-qsls.md",
+      {"QSL Postcard Designer" = "user-guide/qsl/qsl-postcard-designer.md"},
     ]},
     {"Awards" = [
       "user-guide/awards/dxcc.md",
