@@ -3,7 +3,7 @@
 Repository: [wavelog/wavelog_worker on GitHub](https://github.com/wavelog/wavelog_worker)
 
 !!! note "Still under development"
-    The Wavelog Worker is in early beta. The API and configuration may change without warning. Don't use it in production yet. Feedback and testing are welcome!
+    The Wavelog Worker is still < v1.0.0. The API and configuration may change without warning. You can use it in production, but be aware that it is still under development and you may have to make adjustments in the future. Feedback and testing are welcome!
 
     Source: [wavelog/wavelog_worker](https://github.com/wavelog/wavelog_worker) on GitHub
 
