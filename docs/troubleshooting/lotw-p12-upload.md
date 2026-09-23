@@ -1,4 +1,46 @@
-# LoTW P12 File – Not Possible to Upload
+# Issues Uploading a LoTW p12 Certificate
+
+## Certicates Exported from tqsl on MacOS
+
+In some cases certificates exported from tqsl on MacOS seem to be using deprecated encryption algorithms which are not supported on recent OpenSSL versions used in Wavelog. The typical error message on a LoTW p12 certificate upload is `test` as shown on the following screenshot:
+
+<img width="1280" alt="image" src="https://github.com/user-attachments/assets/ae10949b-060f-4d91-af9c-a4a3c7e17832" />
+
+This can also be tested on the command line of a recent Linux system using OpenSSL:
+
+```bash
+$ openssl pkcs12 -info -in <LOTW_CERT_FILENAME>.p12
+Enter Import Password:
+MAC: sha1, Iteration 2048
+MAC length: 20, salt length: 8
+PKCS7 Encrypted data: pbeWithSHA1And40BitRC2-CBC, Iteration 2048
+Error outputting keys and certificates
+40C7FEE22E760000:error:0308010C:digital envelope routines:inner_evp_generic_fetch:unsupported:../crypto/evp/evp_fetch.c:386:Global default library context, Algorithm (RC2-40-CBC : 0), Properties ()
+```
+
+It shows `sha1` as MAC and `RC2-40-CBC` as encryption algorithm which both are deprecated and not supported on recent OpenSSL versions. For comparison a working certificate export would show:
+
+```bash
+$ openssl pkcs12 -info -in <LOTW_CERT_FILENAME>.p12
+Enter Import Password:
+MAC: sha256, Iteration 2048
+MAC length: 32, salt length: 8
+PKCS7 Encrypted data: PBES2, PBKDF2, AES-256-CBC, Iteration 2048, PRF hmacWithSHA256
+Certificate bag
+Bag Attributes
+localKeyID: 37 A0 F5 EC 88 2A 3F F2 22 9A 8E ED 4D FC 1D 02 2A 4B BD F8
+friendlyName: TrustedQSL user certificate
+subject=1.3.6.1.4.1.12348.1.1 = <CALLSIGN>, CN = <NAME>, emailAddress = <EMAILADDRESS>
+issuer=C = US, ST = CT, L = Newington, O = American Radio Relay League, OU = Logbook of the World, CN = Logbook of the World Production CA, DC = arrl.org, emailAddress = lotw@arrl.org
+-----BEGIN CERTIFICATE-----
+[...]
+```
+
+This shows `sha256` and `ARS-256-CBC` which are both recent and acceptable algorithms.
+
+To be able to upload the certificate created on MacOS with deprecated algorithms there is a simple hack: Import the broken certificate into tqsl on a recent Linux (or Windows) system and re-export it (without password) from there. This way it should now make use of the non-deprecated algorithms and import into Wavelog just fine.
+
+## Wavelog on Windows Platforms (WAMP)
 
 There are various reasons why the upload of a LoTW p12 certificate fails. Here are a few hints that solve most issues.
 
