@@ -4,7 +4,7 @@
 
 In some cases certificates exported from tqsl on MacOS seem to be using deprecated encryption algorithms which are not supported on recent OpenSSL versions used in Wavelog. The typical error message on a LoTW p12 certificate upload is `test` as shown on the following screenshot:
 
-<img width="1280" alt="image" src="https://github.com/user-attachments/assets/be26ad1e-53d3-4248-9ba1-a603e8e79946" />
+<img width="1161" height="604" alt="Ohne Titel (2)" src="https://github.com/user-attachments/assets/7bb8c7f1-ac4d-4fdd-bd2a-a81174ebbb8c" />
 
 This can also be tested on the command line of a recent Linux system using OpenSSL:
 
