@@ -288,6 +288,32 @@ Returns information about stations (logbook locations) belonging to the user who
 !!! note
     For this to work via V2 of Wavelog and public access (i.e. not logged in) you need to provide a valid (e.g. read-only) API key in the URL. That simply needs to be set on the URL like: `https://your.wavelog.url/index.php/api/station_info/clPutYourApiKeyHere`
 
+### `api/logbook_public_slugs_accessible`
+
+Returns the station logbooks of the API key owner that have a public slug set (Station Setup → Station Logbooks → "Edit Visitor Link"). The slug can be used for `api/logbook_check_callsign` and `api/logbook_check_grid`. A read-only key is sufficient.
+
+`GET https://your.wavelog.url/index.php/api/logbook_public_slugs_accessible/clPutYourApiKeyHere`
+
+```json
+{
+  "status": "success",
+  "count": 1,
+  "logbooks": [
+    {
+      "logbook_id": 1,
+      "logbook_name": "Home",
+      "public_slug": "ok1abc",
+      "access_level": "owner"
+    }
+  ]
+}
+```
+
+!!! note
+    The endpoint has the same format as in Cloudlog, so tools with a Cloudlog integration (e.g. OscarWatch) can use it. Logbooks are not shared between users in Wavelog, so `access_level` is always `owner`.
+
+A missing or invalid key returns HTTP 401 with `{"status": "failed", "reason": "missing or invalid api key"}`.
+
 ### `api/private_lookup`
 
 !!! note
