@@ -8,6 +8,9 @@ The Online QSL Request System lets other operators request a QSL card for a conf
 
 OQRS is mostly used by DXpeditions, contest stations and operators with high QSO volumes, but it works just as well for a normal station.
 
+!!! note
+    This page covers Wavelog's own OQRS. You can also run [Club Log's OQRS](clublog.md#importing-oqrs-requests) in parallel — those requests never appear here; they are fetched during the Club Log sync and go straight into the [QSL Queue](qsl-queue.md) as *requested*.
+
 Requests you receive land under `User menu -> OQRS Requests`, with a badge showing how many are still open. From there they flow into the [QSL Queue](qsl-queue.md) for printing.
 
 ## Enabling OQRS
