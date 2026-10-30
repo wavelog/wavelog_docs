@@ -41,6 +41,24 @@ Wavelog generates an ADIF file in the `uploads/` folder and sends it to Club Log
 
 The same page offers a manual import per station location. It fetches the confirmations Club Log holds for your callsign and marks the matching QSOs in your log.
 
+## Importing OQRS requests
+
+If you offer OQRS through Club Log, Wavelog can pull in the QSL requests made there. This runs alongside [Wavelog's own OQRS](oqrs.md) — you can offer both at the same time; each has its own queue.
+
+Enable **Fetch Club Log OQRS requests** in `User menu -> Edit profile -> Third Party Services` (off by default). It is a user-level setting because it applies to all of your station locations at once. Club Log OQRS must be enabled on the Club Log side, and your Club Log credentials must be filled in as described above.
+
+The requests are fetched along with the regular Club Log sync — both the manual import and the `clublog_upload` cron job. Each matching QSO in your log is then marked as **requested** and appears in the [QSL Queue](qsl-queue.md) like any manually requested QSO, including the delivery method (direct or bureau) taken from the request.
+
+!!! note
+    The two OQRS flavors fill different queues: requests made through Wavelog's own OQRS pages land under `User menu -> OQRS Requests`. Club Log requests skip that page — the matching QSO goes straight to the normal [QSL Queue](qsl-queue.md).
+
+Details worth knowing:
+
+* The first run backfills the full request history from Club Log; every later run only fetches new requests. If a fetch fails, it is retried on the next run.
+* QSOs that are already marked as sent or requested are never touched, so manual marks survive.
+* Station callsigns without a single QSO in your log are skipped — Wavelog only fetches requests it could match.
+* The manual import honors the *last date* you select on the import page.
+
 ## Club Log SCP file
 
 Independently of the log sync, Wavelog can use Club Log's **SCP file** (Super Check Partial) to suggest likely callsigns while you are logging.
