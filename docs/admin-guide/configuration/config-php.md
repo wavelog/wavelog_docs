@@ -86,6 +86,25 @@ $config['qrzru_username'] = '';
 $config['qrzru_password'] = '';
 ```
 
+#### Callbooks result cache
+
+Starting from the release after 3.2.4, successful callbook lookups can be cached, so the same callsign is not looked up again during the configured lifetime. This saves lookups when the same stations are worked over and over, e.g. by a special event station or during an award activity running for several days, and helps with a daily lookup limit (QRZ.com without a subscription allows 100 lookups per day).
+
+The value is the lifetime in seconds. `0` disables the cache; this is the default, also when the option is missing in config.php. Errors and "not found" results are never cached, so they are looked up again next time.
+
+The results are stored in the same cache as the callbook session keys (`cache_adapter`, with `cache_backup` as fallback).
+
+!!! warning
+    A cached record can be outdated for up to the configured lifetime. Some stations update their callbook page several times a day, e.g. rovers hopping from grid to grid or park to park. With a long lifetime Wavelog keeps suggesting their previous locator or QTH. Choose a lifetime that fits your use case, or keep the cache disabled if you often work such stations.
+
+```php
+$config['callbook_cache_ttl'] = 0;       // disabled (default)
+(or)
+$config['callbook_cache_ttl'] = 86400;   // 1 day
+(or)
+$config['callbook_cache_ttl'] = 604800;  // 7 days
+```
+
 ### Application configuration
 
 Several settings of the Wavelog instance can be configured to match different use cases
