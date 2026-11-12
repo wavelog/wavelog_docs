@@ -400,8 +400,16 @@ be set too, e.g. by a tool that sends QSL cards:
 | `qslsdate` | Date the QSL was sent, `YYYY-MM-DD`; `null` or `""` clears it |
 | `email` | A valid e-mail address |
 
-`qsl_sent: "Y"` without `qslsdate` stores the current date, like marking a QSL as
-sent in the web UI. An invalid value returns `400 validation_error` with the
+<span class="wl-since">3.2.6</span> The paper QSL received status can be set the same way:
+
+| Field | Values |
+| --- | --- |
+| `qsl_rcvd` | `Y`, `N`, `R`, `I` or `V` (case-insensitive) |
+| `qsl_rcvd_via` | `B` (bureau), `D` (direct), `E` (electronic) or `M` (manager) |
+| `qslrdate` | Date the QSL was received, `YYYY-MM-DD`; `null` or `""` clears it |
+
+`qsl_sent: "Y"` without `qslsdate` (or `qsl_rcvd: "Y"` without `qslrdate`) stores
+the current date, like marking a QSL as sent or received in the web UI. An invalid value returns `400 validation_error` with the
 field name in `details`.
 
 ```bash
@@ -413,7 +421,7 @@ curl -X PATCH https://<WAVELOG_URL>/index.php/api/v2/qso/4886      -H "Authoriza
     overwrites a status that was set there.
 
 !!! note
-    QSL received, LoTW / eQSL confirmation bookkeeping and DXCC / country
+    LoTW / eQSL confirmation bookkeeping and DXCC / country
     recalculation fields are intentionally **not** editable through the API.
 
 ## Delete a QSO
