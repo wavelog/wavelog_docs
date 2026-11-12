@@ -87,6 +87,7 @@ Filters (all optional):
 | --- | --- | --- |
 | `station_id` | all owned | Comma-separated station-location ids; ids you do not own return `403 forbidden` |
 | `callsign` | — | Exact match on the worked callsign, e.g. `4W7EST` (case-insensitive); invalid input returns `400 validation_error` |
+| `dxcc_id` | — | DXCC filter, uses the DXCC ID e.g. `176` for `Fiji Islands` (available in Wavelog versions > 3.2.5) |
 | `band` | — | Band filter, e.g. `20m` or `SAT` |
 | `mode` | — | Mode/submode filter, e.g. `SSB` or `FT8` (matches the main mode or the submode) |
 | `qsl_filter` | — | Comma list of `lotw`, `qsl`, `eqsl`, `qrz`, `clublog` (OR-combined) |
