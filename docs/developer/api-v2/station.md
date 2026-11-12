@@ -67,7 +67,13 @@ locations.
   "power": 100,
   "active": true,
   "clublog_upload": "on",
-  "eqsl_qth_nickname": null
+  "qrz_upload": "disabled",
+  "hrdlog_upload": "on",
+  "oqrs": true,
+  "oqrs_email": false,
+  "oqrs_text": "Direct QSL only",
+  "eqsl_qth_nickname": null,
+  "pskreporter_live": true
 }
 ```
 
@@ -126,14 +132,19 @@ curl -X POST https://<WAVELOG_URL>/index.php/api/v2/station \
 | `sig_info` | Special interest group info |
 | `power` | Default TX power in watts |
 | `clublog_upload` | <span class="wl-since">3.2.4</span> ClubLog upload mode: `live` (realtime + batch), `on` (batch only, default on create), `disabled` (nothing is uploaded) |
+| `qrz_upload` | <span class="wl-since">3.2.6</span> QRZ upload mode: `live` (realtime + batch), `on` (batch only), `disabled` (nothing is uploaded; default on create) |
+| `hrdlog_upload` | <span class="wl-since">3.2.6</span> HRDLog upload mode: `live` (realtime + batch), `on` (batch only), `disabled` (nothing is uploaded; default on create) |
+| `oqrs` | <span class="wl-since">3.2.6</span> Enable OQRS for this location (`true` or `false`) |
+| `oqrs_email` | <span class="wl-since">3.2.6</span> Send OQRS e-mail notifications (`true` or `false`) |
+| `oqrs_text` | <span class="wl-since">3.2.6</span> Public OQRS instructions, or `null` |
 | `eqsl_qth_nickname` | <span class="wl-since">3.2.4</span> eQSL QTH nickname of the location — set it to enable eQSL uploads, send `""` to turn them off |
+| `pskreporter_live` | <span class="wl-since">3.2.4</span> Enable live PSK Reporter uploads for this location (`true` or `false`) |
 
 !!! note
-    External-service credentials (QRZ, HRDLog, ClubLog, OQRS, webADIF, eQSL) are
-    **not** exposed through the API and keep their defaults on create. The only
-    exception is the upload switches of the two services whose credentials live
-    on your user account rather than the station: `clublog_upload` and
-    `eqsl_qth_nickname`.
+    External-service credentials such as API keys, usernames, codes and
+    passwords are **not** exposed through the API and keep their defaults on
+    create. Only the non-secret per-station settings listed above are returned
+    and writable.
 
 !!! warning "Clubstation tokens need officer level to write"
     Station locations are shared club infrastructure, and deleting one removes
@@ -178,20 +189,31 @@ The updated station object is returned in `data`.
     without silently reassigning your active location. A body containing
     nothing but `set_active` is valid.
 
-!!! note "Third-party upload switches"
-    <span class="wl-since">3.2.4</span> `clublog_upload` and
-    `eqsl_qth_nickname` manage the external upload behaviour of a location:
+!!! note "Third-party service settings"
+    The upload modes, OQRS settings, eQSL nickname and PSK Reporter switch
+    manage the non-secret external-service behaviour of a location:
 
     ```bash
     curl -X PATCH https://<WAVELOG_URL>/index.php/api/v2/station/42 \
          -H "Authorization: Bearer wl2_your_token_here" \
          -H "Content-Type: application/json" \
-         -d '{ "clublog_upload": "live", "eqsl_qth_nickname": "Home" }'
+         -d '{
+           "clublog_upload": "live",
+           "qrz_upload": "disabled",
+           "hrdlog_upload": "on",
+           "oqrs": true,
+           "oqrs_email": true,
+           "oqrs_text": "Direct QSL only",
+           "eqsl_qth_nickname": "Home",
+           "pskreporter_live": true
+         }'
     ```
 
-    Both are returned by every `GET`, so a fetched station can be modified and
-    sent straight back. `clublog_upload` values other than `live`, `on` or
-    `disabled` are rejected with `400 validation_error`.
+    All settings are returned by every `GET`, so a fetched station can be
+    modified and sent straight back. Upload mode values other than `live`, `on`
+    or `disabled` are rejected with `400 validation_error`. Wavelog can change a
+    QRZ or HRDLog mode to `disabled` automatically after an authentication
+    failure. Service credentials remain unchanged and are never returned.
 
 !!! note "Required fields cannot be blanked out"
     The fields required on create stay required for the lifetime of the
