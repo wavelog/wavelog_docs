@@ -180,6 +180,7 @@ nav = [
   {"Troubleshooting" = [
     "troubleshooting/adif-cant-import.md",
     "troubleshooting/lotw-p12-upload.md",
+    "troubleshooting/lotw-log-signing.md",
     "troubleshooting/no-realtime-qso-upload.md",
     "troubleshooting/migration-locked.md",
     "troubleshooting/theme-issues.md",
