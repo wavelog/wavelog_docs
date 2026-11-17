@@ -30,7 +30,7 @@ Environment=OPENSSL_CONF=/etc/pki/tls/openssl-php-fpm.cnf
 Lastly restart the `php-fpm` services:
 
 ```bash
-$ systemctl daemon-reload && systemctl restart php-fpm
+systemctl daemon-reload && systemctl restart php-fpm
 ```
 
 This fix should allow LoTW logs to be signed and uploaded again.
