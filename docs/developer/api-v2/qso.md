@@ -69,9 +69,23 @@ Responses return this shape (from the logbook record):
   "notes": "",
   "qth": "",
   "prop_mode": "",
-  "sat_name": ""
+  "sat_name": "",
+  "operator": "SP8OFF",
+  "station_callsign": "SN0LPU",
+  "owner_callsign": "",
+  "my_gridsquare": "KO01XJ",
+  "tx_pwr": 100,
+  "qso_date_off": "2026-06-16 17:08:00",
+  "contest_id": ""
 }
 ```
+
+The QSO object also contains the station side of the contact, set when the QSO is
+created and **read-only** afterwards (`PATCH` does not change them): `operator`,
+`station_callsign`, `owner_callsign`, `my_gridsquare`, `my_sota_ref`, `my_pota_ref`,
+`my_wwff_ref`, `my_sig`, `my_sig_info`, `tx_pwr` (a number, watts), `qso_date_off`
+and `contest_id` (available in Wavelog versions > 3.2.5). On a
+[clubstation](clubstation.md) `operator` tells the members' QSOs apart.
 
 ## List QSOs
 
@@ -94,6 +108,7 @@ Filters (all optional):
 | `since_id` | `0` | Only QSOs whose primary key is greater than this |
 | `qso_since` | — | `YYYY-MM-DD`, oldest QSO date to include (the whole day counts) |
 | `qso_until` | — | `YYYY-MM-DD`, newest QSO date to include (the whole day counts) |
+| `operator` | — | Exact match on the operator callsign, e.g. `SP8OFF` (case-insensitive); QSOs with an empty operator are not matched; invalid input returns `400 validation_error` (available in Wavelog versions > 3.2.5) |
 
 `qso_since` and `qso_until` filter on the **QSO date**, are inclusive on both ends
 and can be used on their own or as a pair. They are independent of `since_id`, which
@@ -104,7 +119,9 @@ walks the database primary key for incremental syncing. A malformed date returns
     For a [clubstation](clubstation.md) token below officer level the list is
     restricted to QSOs the acting member logged themselves, and `meta.total`
     counts only those. The ADIF export runs the same query, so `format=adif`
-    returns exactly the same set. An officer sees every operator's QSO.
+    returns exactly the same set, and the `operator` filter is ignored. An officer
+    sees every operator's QSO and can narrow the list to one operator with
+    `operator=` (e.g. their own QSOs only).
 
 Pagination and rendering:
 

@@ -68,7 +68,8 @@ For levels 3 and 6 every QSO operation is scoped to the member's own callsign
   return **`404 not_found`**, not `403`. A QSO the token may not see is reported
   as if it did not exist, rather than confirming its existence.
 
-An officer sees and edits every operator's QSO.
+An officer sees and edits every operator's QSO; `GET /api/v2/qso?operator=CALL` narrows the
+list to one operator, and every QSO carries its `operator` field (Wavelog versions > 3.2.5).
 
 ### The operator is assigned, not chosen
 
