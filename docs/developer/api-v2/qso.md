@@ -374,7 +374,11 @@ Notes:
 - `qso_date` and `time_on` must be supplied **together**. `time_off` defaults to
   `time_on` and is never earlier than it.
 - Passing `station_profile_id` moves the QSO to another of your station locations
-  (ownership is verified).
+  (ownership is verified). <span class="wl-since">3.2.6</span> The QSO then carries
+  that location's details, as if it had been imported there: station callsign, my
+  gridsquare (or VUCC grids), city, county, DXCC and country, CQ and ITU zones, and the
+  IOTA, SOTA, WWFF, POTA and SIG references. The distance is measured again from the
+  new gridsquare. Earlier versions changed only the station callsign.
 - With a [clubstation](clubstation.md) token below officer level you may only
   edit QSOs you logged yourself; another operator's QSO returns `404 not_found`.
 
