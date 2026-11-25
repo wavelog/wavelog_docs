@@ -74,18 +74,24 @@ Responses return this shape (from the logbook record):
   "station_callsign": "SN0LPU",
   "owner_callsign": "",
   "my_gridsquare": "KO01XJ",
+  "my_vucc_grids": "",
   "tx_pwr": 100,
   "qso_date_off": "2026-06-16 17:08:00",
   "contest_id": ""
 }
 ```
 
-The QSO object also contains the station side of the contact, set when the QSO is
-created and **read-only** afterwards (`PATCH` does not change them): `operator`,
-`station_callsign`, `owner_callsign`, `my_gridsquare`, `my_sota_ref`, `my_pota_ref`,
-`my_wwff_ref`, `my_sig`, `my_sig_info`, `tx_pwr` (a number, watts), `qso_date_off`
-and `contest_id` (available in Wavelog versions > 3.2.5). On a
-[clubstation](clubstation.md) `operator` tells the members' QSOs apart.
+The QSO object also contains the station side of the contact (available in Wavelog
+versions > 3.2.5). All of these fields are **read-only** (`PATCH` does not change them):
+
+- `station_callsign`, `my_gridsquare`, `my_vucc_grids`, `my_sota_ref`, `my_pota_ref`,
+  `my_wwff_ref`, `my_sig` and `my_sig_info` come from the QSO's **station location**,
+  exactly like `STATION_CALLSIGN` and the `MY_*` fields of the ADIF export. A later edit
+  of the location is reflected here. A location with several gridsquares
+  (comma-separated) is returned in `my_vucc_grids`, and `my_gridsquare` is then empty.
+- `operator`, `owner_callsign`, `tx_pwr` (a number, watts), `qso_date_off` and
+  `contest_id` come from the QSO record. On a [clubstation](clubstation.md) `operator`
+  tells the members' QSOs apart.
 
 ## List QSOs
 
