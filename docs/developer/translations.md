@@ -130,3 +130,16 @@ sprintf(__("Link %s, Link %s, Link %s, Number %d, Number %d"), "A", "B", "C", 1,
 // Prints out:
 "Link A, Link B, Link C, Number 1, Number 2"
 ```
+
+Sometimes we need to reorder placeholders to make a translation read naturally. You can use positional placeholders such as `%n$s` and `%n$d` in translation, where `n` is the 1-based position of the argument. In the example above, `%4$d` uses the fourth argument and `%1$s` uses the first.
+
+```php
+<?php
+// Translation
+"Number %4$d, Number %5$d, Link %1$s, Link %2$s, Link %3$s"
+
+// Prints out
+"Number 1, Number 2, Link A, Link B, Link C"
+```
+
+When reordering placeholders, make sure to use positional placeholders consistently throughout the translated string.
